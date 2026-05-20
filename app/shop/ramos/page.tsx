@@ -96,7 +96,7 @@ export default function RamosPage() {
           </div>
         </section>
 
-        <section className="grid grid-cols-2 gap-4 lg:gap-6">
+        <section className="grid grid-cols-1 gap-4 min-[450px]:grid-cols-2 lg:gap-6">
           {bouquets.map((bouquet) => (
             <ProductCard
               key={bouquet.title}

@@ -84,7 +84,7 @@ export default function Home() {
               <div className="flex justify-center lg:justify-start">
                 <Link
                   href="/shop"
-                  className="rounded-full bg-[var(--foreground)] px-8 py-4 text-xs uppercase tracking-[0.25em] text-white transition-all duration-300 hover:scale-[1.02] hover:opacity-90"
+                  className="rounded-full bg-[var(--foreground)] px-8 py-4 text-xs uppercase tracking-[0.25em] text-white! transition-all duration-300 hover:scale-[1.02] hover:opacity-90"
                 >
                   Comprar
                 </Link>

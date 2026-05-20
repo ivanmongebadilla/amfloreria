@@ -119,8 +119,9 @@ export default function Home() {
               </div>
 
               <div className="space-y-4 text-center md:text-right">
-                <p className="text-lg">(555) 123-4567</p>
-                <p className="text-lg">contacto@amboutiquefloral.com</p>
+                <p className="text-lg">Telefono: (555) 123-4567</p>
+                <p className="text-lg">Whatsapp: (555) 123-4567</p>
+                <p className="text-lg">Email: contacto@amboutiquefloral.com</p>
               </div>
             </div>
           </section>

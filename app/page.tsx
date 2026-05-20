@@ -83,8 +83,14 @@ export default function Home() {
               <div className="absolute bottom-0 right-0 h-48 w-48 rounded-full bg-[var(--sage)] opacity-40 blur-3xl sm:h-72 sm:w-72" />
 
               <div className="relative overflow-hidden rounded-[2rem] border border-white/60 bg-gradient-to-br from-[var(--beige)] via-[var(--blush)] to-[var(--sage)] p-4 shadow-2xl shadow-black/5 sm:rounded-[2.5rem] sm:p-8">
-                <div className="flex min-h-[360px] items-end rounded-[1.5rem] border border-white/40 bg-white/20 p-6 backdrop-blur-sm sm:min-h-[560px] sm:rounded-[2rem] sm:p-10">
-                  <div className="space-y-4 sm:space-y-5">
+                <div className="relative flex min-h-[360px] items-end overflow-hidden rounded-[1.5rem] border border-white/40 bg-white/20 p-6 backdrop-blur-sm sm:min-h-[560px] sm:rounded-[2rem] sm:p-10">
+                  <img
+                    src="https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop"
+                    alt="Luxury floral arrangement"
+                    className="absolute -bottom-10 right-[-40px] h-[280px] w-auto object-cover opacity-40 blur-[1px] sm:-bottom-16 sm:right-[-60px] sm:h-[420px]"
+                  />
+
+                  <div className="relative z-10 space-y-4 sm:space-y-5">
                     <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-700 sm:text-xs">
                       Colección Signature
                     </p>

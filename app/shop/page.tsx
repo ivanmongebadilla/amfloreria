@@ -32,17 +32,27 @@ export default function ShopPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 text-[var(--foreground)] sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-14">
-        <header className="flex items-center justify-between border-b border-[color:var(--border)] pb-6">
-          <Link href="/" className="space-y-1">
-            <p className="font-heading text-3xl tracking-[0.25em]">A|M</p>
-            <p className="text-[10px] uppercase tracking-[0.45em] text-neutral-500">
+        <header className="flex flex-col gap-6 border-b border-[color:var(--border)] pb-6 md:flex-row md:items-center md:justify-between">
+          <Link href="/" className="space-y-1 text-center md:text-left">
+            <p className="font-heading text-3xl tracking-[0.25em] md:text-4xl">
+              A|M
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.45em] text-neutral-500 md:text-xs">
               Boutique Floral
             </p>
           </Link>
 
-          <button className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40">
-            <ShoppingBag size={18} />
-          </button>
+          <div className="flex items-center justify-center gap-4 md:justify-end">
+            <nav className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-neutral-700 sm:gap-8 sm:text-xs">
+              <Link href="/">Inicio</Link>
+              <Link href="/#nosotros">Nosotros</Link>
+              <Link href="/#contacto">Contacto</Link>
+            </nav>
+
+            <button className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40">
+              <ShoppingBag size={18} />
+            </button>
+          </div>
         </header>
 
         <section className="space-y-5 text-center">

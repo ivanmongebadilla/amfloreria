@@ -59,7 +59,7 @@ export default function RamosPage() {
       <div className="mx-auto flex max-w-7xl flex-col gap-14">
         <Navbar showShopLink={false} />
 
-        <section className="relative overflow-hidden rounded-[2.5rem] border border-white/50 bg-gradient-to-br from-[var(--beige)] via-[var(--blush)] to-[var(--sage)] px-6 py-16 shadow-2xl shadow-black/5 sm:px-10 md:px-14 md:py-24">
+        <section className="relative overflow-hidden rounded-[2.5rem] border border-white/50 bg-gradient-to-br from-[var(--beige)] via-[var(--blush)] to-[var(--sage)] px-6 py-12 shadow-2xl shadow-black/5 sm:px-10 md:px-14 md:py-16">
           <div
             className="absolute inset-0 opacity-10 blur-[2px]"
             style={{
@@ -70,16 +70,16 @@ export default function RamosPage() {
             }}
           />
 
-          <div className="relative z-10 mx-auto max-w-3xl space-y-6 text-center">
+          <div className="relative z-10 mx-auto max-w-3xl space-y-4 text-center">
             <p className="text-xs uppercase tracking-[0.35em] text-neutral-600">
               Ramos
             </p>
 
-            <h1 className="font-heading text-5xl leading-none md:text-7xl">
+            <h1 className="font-heading text-4xl leading-none md:text-6xl">
               Bouquets diseñados para emocionar.
             </h1>
 
-            <p className="text-base leading-8 text-neutral-700 sm:text-lg">
+            <p className="text-sm leading-7 text-neutral-700 sm:text-base sm:leading-8">
               Descubre ramos florales elegantes creados para celebrar momentos
               especiales, regalar emociones y transformar cualquier espacio.
             </p>

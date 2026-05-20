@@ -8,25 +8,25 @@ import {
 const collections = [
   {
     title: "Romance",
-    description: "Bouquets suaves y delicados para momentos especiales.",
+    description: "Bouquets suaves y delicados.",
     image:
       "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Luxury",
-    description: "Arreglos premium con presencia elegante y sofisticada.",
+    description: "Arreglos premium sofisticados.",
     image:
       "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Eventos",
-    description: "Diseños florales para bodas y celebraciones memorables.",
+    description: "Diseños para bodas y celebraciones.",
     image:
       "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
   },
   {
     title: "Seasonal",
-    description: "Colecciones inspiradas en la temporada y la naturaleza.",
+    description: "Inspiradas en la temporada.",
     image:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
   },
@@ -109,35 +109,35 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
               {collections.map((collection) => (
                 <article
                   key={collection.title}
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/50 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-sm"
+                  className="group relative overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm"
                 >
                   <div
-                    className="h-[420px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 sm:h-[520px]"
+                    className="h-[240px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 sm:h-[320px]"
                     style={{ backgroundImage: `url(${collection.image})` }}
                   />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
-                  <div className="absolute bottom-0 left-0 flex w-full flex-col gap-4 p-8 text-white">
+                  <div className="absolute bottom-0 left-0 flex w-full flex-col gap-3 p-4 text-white sm:p-6">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/70">
+                      <p className="text-[8px] uppercase tracking-[0.3em] text-white/70 sm:text-[10px]">
                         A|M Collection
                       </p>
 
-                      <h3 className="font-heading text-5xl leading-none">
+                      <h3 className="font-heading text-3xl leading-none sm:text-4xl">
                         {collection.title}
                       </h3>
                     </div>
 
-                    <p className="max-w-sm text-sm leading-7 text-white/80">
+                    <p className="text-xs leading-5 text-white/80 sm:text-sm sm:leading-6">
                       {collection.description}
                     </p>
 
-                    <button className="w-fit rounded-full border border-white/30 bg-white/10 px-6 py-3 text-xs uppercase tracking-[0.2em] backdrop-blur-md transition-colors hover:bg-white hover:text-black">
+                    <button className="w-fit rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.2em] backdrop-blur-md transition-colors hover:bg-white hover:text-black sm:px-5 sm:py-2.5 sm:text-xs">
                       Explorar
                     </button>
                   </div>

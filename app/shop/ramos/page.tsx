@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
@@ -56,8 +57,17 @@ export default function RamosPage() {
 
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 text-[var(--foreground)] sm:px-6 md:px-12 lg:px-20">
-      <div className="mx-auto flex max-w-7xl flex-col gap-14">
+      <div className="mx-auto flex max-w-7xl flex-col gap-10">
         <Navbar showShopLink={false} />
+
+        <div>
+          <Link
+            href="/shop"
+            className="inline-flex rounded-full border border-[color:var(--border)] bg-white/70 px-5 py-3 text-[10px] uppercase tracking-[0.25em] transition-colors hover:bg-[var(--blush)]/40 sm:text-xs"
+          >
+            ← Volver a Shop
+          </Link>
+        </div>
 
         <section className="relative overflow-hidden rounded-[2.5rem] border border-white/50 bg-gradient-to-br from-[var(--beige)] via-[var(--blush)] to-[var(--sage)] px-6 py-12 shadow-2xl shadow-black/5 sm:px-10 md:px-14 md:py-16">
           <div

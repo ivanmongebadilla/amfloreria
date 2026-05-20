@@ -109,14 +109,14 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="flex gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-2 lg:overflow-visible">
+            <div className="grid gap-6 lg:grid-cols-2">
               {collections.map((collection) => (
                 <article
                   key={collection.title}
-                  className="group relative min-w-[300px] overflow-hidden rounded-[2rem] border border-white/50 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-sm lg:min-w-0"
+                  className="group relative overflow-hidden rounded-[2rem] border border-white/50 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-sm"
                 >
                   <div
-                    className="h-[420px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    className="h-[420px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 sm:h-[520px]"
                     style={{ backgroundImage: `url(${collection.image})` }}
                   />
 

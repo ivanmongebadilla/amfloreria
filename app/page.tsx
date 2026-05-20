@@ -1,4 +1,9 @@
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  MessageCircle,
+  ShoppingBag,
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -15,11 +20,17 @@ export default function Home() {
               </p>
             </div>
 
-            <nav className="flex items-center justify-center gap-5 text-[10px] uppercase tracking-[0.2em] text-neutral-700 sm:gap-8 sm:text-xs md:justify-end">
-              <a href="#colecciones">Colecciones</a>
-              <a href="#nosotros">Nosotros</a>
-              <a href="#contacto">Contacto</a>
-            </nav>
+            <div className="flex items-center justify-center gap-4 md:justify-end">
+              <nav className="flex items-center justify-center gap-5 text-[10px] uppercase tracking-[0.2em] text-neutral-700 sm:gap-8 sm:text-xs">
+                <a href="#colecciones">Colecciones</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+              </nav>
+
+              <button className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40">
+                <ShoppingBag size={18} />
+              </button>
+            </div>
           </header>
 
           <section

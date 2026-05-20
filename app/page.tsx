@@ -5,6 +5,33 @@ import {
   ShoppingBag,
 } from "lucide-react";
 
+const collections = [
+  {
+    title: "Romance",
+    description: "Bouquets suaves y delicados para momentos especiales.",
+    image:
+      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Luxury",
+    description: "Arreglos premium con presencia elegante y sofisticada.",
+    image:
+      "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Eventos",
+    description: "Diseños florales para bodas y celebraciones memorables.",
+    image:
+      "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
+  },
+  {
+    title: "Seasonal",
+    description: "Colecciones inspiradas en la temporada y la naturaleza.",
+    image:
+      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
+  },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]">
@@ -12,7 +39,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-16 md:gap-24">
           <header className="flex flex-col gap-6 border-b border-[color:var(--border)] pb-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1 text-center md:text-left">
-              <p className="font-heading text-3xl tracking-[0.25em] text-[var(--foreground)] md:text-4xl">
+              <p className="font-heading text-3xl tracking-[0.25em] md:text-4xl">
                 A|M
               </p>
               <p className="text-[10px] uppercase tracking-[0.45em] text-neutral-500 md:text-xs">
@@ -21,7 +48,7 @@ export default function Home() {
             </div>
 
             <div className="flex items-center justify-center gap-4 md:justify-end">
-              <nav className="flex items-center justify-center gap-5 text-[10px] uppercase tracking-[0.2em] text-neutral-700 sm:gap-8 sm:text-xs">
+              <nav className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-neutral-700 sm:gap-8 sm:text-xs">
                 <a href="#colecciones">Colecciones</a>
                 <a href="#nosotros">Nosotros</a>
                 <a href="#contacto">Contacto</a>
@@ -33,10 +60,7 @@ export default function Home() {
             </div>
           </header>
 
-          <section
-            id="colecciones"
-            className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14"
-          >
+          <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
             <div className="space-y-6 text-center lg:text-left">
               <div className="inline-flex rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-2 text-[10px] uppercase tracking-[0.25em] backdrop-blur-sm sm:px-5 sm:text-xs">
                 Diseño Floral de Lujo
@@ -51,16 +75,6 @@ export default function Home() {
                   A|M Boutique Floral crea bouquets premium y experiencias
                   florales para celebraciones, regalos y momentos especiales.
                 </p>
-              </div>
-
-              <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:justify-center lg:justify-start">
-                <button className="rounded-full bg-[var(--foreground)] px-6 py-4 text-xs uppercase tracking-[0.2em] text-white transition-transform duration-300 hover:scale-[1.02] sm:px-8 sm:text-sm">
-                  Ver Colección
-                </button>
-
-                <button className="rounded-full border border-[color:var(--border)] bg-white/80 px-6 py-4 text-xs uppercase tracking-[0.2em] backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40 sm:px-8 sm:text-sm">
-                  Bouquet Personalizado
-                </button>
               </div>
             </div>
 
@@ -84,6 +98,54 @@ export default function Home() {
             </div>
           </section>
 
+          <section id="colecciones" className="space-y-10">
+            <div className="space-y-4 text-center">
+              <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Colecciones
+              </p>
+
+              <h2 className="font-heading text-5xl leading-none md:text-6xl">
+                Diseños florales para cada estilo.
+              </h2>
+            </div>
+
+            <div className="flex gap-5 overflow-x-auto pb-4 lg:grid lg:grid-cols-2 lg:overflow-visible">
+              {collections.map((collection) => (
+                <article
+                  key={collection.title}
+                  className="group relative min-w-[300px] overflow-hidden rounded-[2rem] border border-white/50 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-sm lg:min-w-0"
+                >
+                  <div
+                    className="h-[420px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                    style={{ backgroundImage: `url(${collection.image})` }}
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+
+                  <div className="absolute bottom-0 left-0 flex w-full flex-col gap-4 p-8 text-white">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.3em] text-white/70">
+                        A|M Collection
+                      </p>
+
+                      <h3 className="font-heading text-5xl leading-none">
+                        {collection.title}
+                      </h3>
+                    </div>
+
+                    <p className="max-w-sm text-sm leading-7 text-white/80">
+                      {collection.description}
+                    </p>
+
+                    <button className="w-fit rounded-full border border-white/30 bg-white/10 px-6 py-3 text-xs uppercase tracking-[0.2em] backdrop-blur-md transition-colors hover:bg-white hover:text-black">
+                      Explorar
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section
             id="nosotros"
             className="grid gap-10 rounded-[2rem] border border-[color:var(--border)] bg-white/60 p-8 backdrop-blur-sm md:grid-cols-2 md:p-12"
@@ -101,15 +163,12 @@ export default function Home() {
             <div className="space-y-6 text-neutral-600">
               <p className="text-base leading-8">
                 En A|M Boutique Floral creemos que cada arreglo floral debe
-                transmitir emoción, elegancia y personalidad. Nuestro enfoque
-                combina diseño moderno con detalles delicados para crear piezas
-                únicas para cualquier ocasión.
+                transmitir emoción, elegancia y personalidad.
               </p>
 
               <p className="text-base leading-8">
                 Cada bouquet es cuidadosamente elaborado utilizando flores
-                frescas y composiciones inspiradas en una estética sofisticada,
-                romántica y atemporal.
+                frescas y composiciones inspiradas en una estética sofisticada.
               </p>
             </div>
           </section>
@@ -146,24 +205,15 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-5">
-              <a
-                href="#"
-                className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
-              >
+              <a href="#" className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40">
                 <Facebook size={18} />
               </a>
 
-              <a
-                href="#"
-                className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
-              >
+              <a href="#" className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40">
                 <Instagram size={18} />
               </a>
 
-              <a
-                href="#"
-                className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
-              >
+              <a href="#" className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40">
                 <MessageCircle size={18} />
               </a>
             </div>

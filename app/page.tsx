@@ -1,8 +1,10 @@
+import { Facebook, Instagram, MessageCircle } from "lucide-react";
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[var(--background)] text-[var(--foreground)]">
       <section className="relative overflow-hidden px-4 py-6 sm:px-6 md:px-12 lg:px-20">
-        <div className="mx-auto flex max-w-7xl flex-col gap-10 md:gap-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-16 md:gap-24">
           <header className="flex flex-col gap-6 border-b border-[color:var(--border)] pb-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1 text-center md:text-left">
               <p className="font-heading text-3xl tracking-[0.25em] text-[var(--foreground)] md:text-4xl">
@@ -20,7 +22,10 @@ export default function Home() {
             </nav>
           </header>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+          <section
+            id="colecciones"
+            className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14"
+          >
             <div className="space-y-6 text-center lg:text-left">
               <div className="inline-flex rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-2 text-[10px] uppercase tracking-[0.25em] backdrop-blur-sm sm:px-5 sm:text-xs">
                 Diseño Floral de Lujo
@@ -66,7 +71,91 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <section
+            id="nosotros"
+            className="grid gap-10 rounded-[2rem] border border-[color:var(--border)] bg-white/60 p-8 backdrop-blur-sm md:grid-cols-2 md:p-12"
+          >
+            <div className="space-y-4">
+              <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Sobre Nosotros
+              </p>
+
+              <h2 className="font-heading text-5xl leading-none md:text-6xl">
+                Diseñamos momentos que se convierten en recuerdos.
+              </h2>
+            </div>
+
+            <div className="space-y-6 text-neutral-600">
+              <p className="text-base leading-8">
+                En A|M Boutique Floral creemos que cada arreglo floral debe
+                transmitir emoción, elegancia y personalidad. Nuestro enfoque
+                combina diseño moderno con detalles delicados para crear piezas
+                únicas para cualquier ocasión.
+              </p>
+
+              <p className="text-base leading-8">
+                Cada bouquet es cuidadosamente elaborado utilizando flores
+                frescas y composiciones inspiradas en una estética sofisticada,
+                romántica y atemporal.
+              </p>
+            </div>
+          </section>
+
+          <section
+            id="contacto"
+            className="rounded-[2rem] bg-[var(--foreground)] px-6 py-12 text-white sm:px-10 md:px-14"
+          >
+            <div className="mx-auto flex max-w-5xl flex-col gap-10 md:flex-row md:items-center md:justify-between">
+              <div className="space-y-4 text-center md:text-left">
+                <p className="text-xs uppercase tracking-[0.3em] text-white/70">
+                  Contacto
+                </p>
+
+                <h2 className="font-heading text-5xl leading-none md:text-6xl">
+                  Hagamos algo hermoso juntos.
+                </h2>
+              </div>
+
+              <div className="space-y-4 text-center md:text-right">
+                <p className="text-lg">(555) 123-4567</p>
+                <p className="text-lg">contacto@amboutiquefloral.com</p>
+              </div>
+            </div>
+          </section>
+
+          <footer className="flex flex-col items-center justify-between gap-6 border-t border-[color:var(--border)] py-8 text-center md:flex-row md:text-left">
+            <div>
+              <p className="font-heading text-2xl tracking-[0.2em]">A|M</p>
+              <p className="text-xs uppercase tracking-[0.3em] text-neutral-500">
+                Boutique Floral
+              </p>
+            </div>
+
+            <div className="flex items-center gap-5">
+              <a
+                href="#"
+                className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
+              >
+                <Facebook size={18} />
+              </a>
+
+              <a
+                href="#"
+                className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
+              >
+                <Instagram size={18} />
+              </a>
+
+              <a
+                href="#"
+                className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
+              >
+                <MessageCircle size={18} />
+              </a>
+            </div>
+          </footer>
         </div>
       </section>
     </main>

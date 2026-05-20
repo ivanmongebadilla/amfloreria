@@ -1,6 +1,10 @@
+"use client";
+
+import { useState } from "react";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { ProductCard } from "@/src/components/ui/ProductCard";
+import { ProductModal } from "@/src/components/ui/ProductModal";
 
 const bouquets = [
   {
@@ -8,46 +12,48 @@ const bouquets = [
     price: "$1,250 MXN",
     image:
       "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
-    href: "/shop/ramos/bouquet-romance",
+    flowers: ["Rosas", "Peonías", "Eucalipto"],
+    quantity: "24 flores",
+    description:
+      "Bouquet elegante con tonos blush diseñado para regalar emociones y momentos especiales.",
   },
   {
     title: "Soft Peonies",
     price: "$1,690 MXN",
     image:
       "https://images.unsplash.com/photo-1468327768560-75b778cbb551?q=80&w=1200&auto=format&fit=crop",
-    href: "/shop/ramos/soft-peonies",
+    flowers: ["Peonías", "Rosas Garden", "Eucalipto"],
+    quantity: "30 flores",
+    description:
+      "Diseño floral suave y romántico inspirado en una estética premium contemporánea.",
   },
   {
     title: "Luxury Blush",
     price: "$1,850 MXN",
     image:
       "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
-    href: "/shop/ramos/luxury-blush",
+    flowers: ["Rosas Premium", "Tulipanes", "Hydrangeas"],
+    quantity: "36 flores",
+    description:
+      "Bouquet sofisticado con composición floral de lujo para celebraciones memorables.",
   },
   {
     title: "Garden Signature",
     price: "$1,490 MXN",
     image:
       "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
-    href: "/shop/ramos/garden-signature",
-  },
-  {
-    title: "Elegant Ivory",
-    price: "$1,390 MXN",
-    image:
-      "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
-    href: "/shop/ramos/elegant-ivory",
-  },
-  {
-    title: "Rosé Garden",
-    price: "$1,720 MXN",
-    image:
-      "https://images.unsplash.com/photo-1455659817273-f96807779a8a?q=80&w=1200&auto=format&fit=crop",
-    href: "/shop/ramos/rose-garden",
+    flowers: ["Garden Roses", "Eucalipto", "Ranúnculos"],
+    quantity: "28 flores",
+    description:
+      "Arreglo floral editorial inspirado en jardines europeos y diseño atemporal.",
   },
 ];
 
 export default function RamosPage() {
+  const [selectedProduct, setSelectedProduct] = useState<
+    (typeof bouquets)[0] | null
+  >(null);
+
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 text-[var(--foreground)] sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto flex max-w-7xl flex-col gap-14">
@@ -87,13 +93,19 @@ export default function RamosPage() {
               title={bouquet.title}
               price={bouquet.price}
               image={bouquet.image}
-              href={bouquet.href}
+              onInfoClick={() => setSelectedProduct(bouquet)}
             />
           ))}
         </section>
 
         <Footer />
       </div>
+
+      <ProductModal
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        product={selectedProduct}
+      />
     </main>
   );
 }

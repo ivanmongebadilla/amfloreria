@@ -65,7 +65,7 @@ export default function Home() {
           </header>
 
           <section className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
-            <div className="space-y-6 text-center lg:text-left">
+            <div className="space-y-8 text-center lg:text-left">
               <div className="inline-flex rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-2 text-[10px] uppercase tracking-[0.25em] backdrop-blur-sm sm:px-5 sm:text-xs">
                 Diseño Floral de Lujo
               </div>
@@ -79,6 +79,15 @@ export default function Home() {
                   A|M Boutique Floral crea bouquets premium y experiencias
                   florales para celebraciones, regalos y momentos especiales.
                 </p>
+              </div>
+
+              <div className="flex justify-center lg:justify-start">
+                <Link
+                  href="/shop"
+                  className="rounded-full bg-[var(--foreground)] px-8 py-4 text-xs uppercase tracking-[0.25em] text-white transition-all duration-300 hover:scale-[1.02] hover:opacity-90"
+                >
+                  Comprar
+                </Link>
               </div>
             </div>
 

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Navbar } from "@/components/shared/Navbar";
-import { Footer } from "@/components/shared/Footer";
+import { Navbar } from "@/src/components/shared/Navbar";
+import { Footer } from "@/src/components/shared/Footer";
 
 const collections = [
   {

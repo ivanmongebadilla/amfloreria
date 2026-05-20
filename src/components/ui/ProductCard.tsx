@@ -1,0 +1,53 @@
+"use client";
+
+interface ProductCardProps {
+  title: string;
+  price: string;
+  image: string;
+  onInfoClick: () => void;
+}
+
+export function ProductCard({
+  title,
+  price,
+  image,
+  onInfoClick,
+}: ProductCardProps) {
+  return (
+    <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm">
+      <div
+        className="h-[250px] bg-cover bg-center sm:h-[340px]"
+        style={{ backgroundImage: `url(${image})` }}
+      />
+
+      <div className="space-y-4 p-4 sm:p-5">
+        <div className="space-y-1">
+          <p className="text-[8px] uppercase tracking-[0.3em] text-neutral-400 sm:text-[10px]">
+            A|M Bouquet
+          </p>
+
+          <h2 className="font-heading text-2xl leading-none sm:text-3xl">
+            {title}
+          </h2>
+        </div>
+
+        <p className="text-sm uppercase tracking-[0.15em] text-neutral-500">
+          {price}
+        </p>
+
+        <div className="flex gap-2">
+          <button
+            onClick={onInfoClick}
+            className="flex-1 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-colors hover:bg-[var(--blush)]/40 sm:text-xs"
+          >
+            Info
+          </button>
+
+          <button className="flex-1 rounded-full bg-[var(--foreground)] px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:text-xs">
+            Agregar
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+}

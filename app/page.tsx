@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Facebook,
   Instagram,
@@ -49,14 +50,17 @@ export default function Home() {
 
             <div className="flex items-center justify-center gap-4 md:justify-end">
               <nav className="flex items-center gap-5 text-[10px] uppercase tracking-[0.2em] text-neutral-700 sm:gap-8 sm:text-xs">
-                <a href="#colecciones">Colecciones</a>
+                <Link href="/shop">Comprar</Link>
                 <a href="#nosotros">Nosotros</a>
                 <a href="#contacto">Contacto</a>
               </nav>
 
-              <button className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40">
+              <Link
+                href="/shop"
+                className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40"
+              >
                 <ShoppingBag size={18} />
-              </button>
+              </Link>
             </div>
           </header>
 
@@ -147,9 +151,12 @@ export default function Home() {
                       {collection.description}
                     </p>
 
-                    <button className="w-fit rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.2em] backdrop-blur-md transition-colors hover:bg-white hover:text-black sm:px-5 sm:py-2.5 sm:text-xs">
+                    <Link
+                      href="/shop"
+                      className="w-fit rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.2em] backdrop-blur-md transition-colors hover:bg-white hover:text-black sm:px-5 sm:py-2.5 sm:text-xs"
+                    >
                       Explorar
-                    </button>
+                    </Link>
                   </div>
                 </article>
               ))}

@@ -113,10 +113,10 @@ export default function Home() {
               {collections.map((collection) => (
                 <article
                   key={collection.title}
-                  className="group relative overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm"
+                  className="group relative overflow-hidden rounded-[1.75rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm"
                 >
                   <div
-                    className="h-[240px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 sm:h-[320px]"
+                    className="h-[300px] bg-cover bg-center transition-transform duration-700 group-hover:scale-105 sm:h-[380px]"
                     style={{ backgroundImage: `url(${collection.image})` }}
                   />
 

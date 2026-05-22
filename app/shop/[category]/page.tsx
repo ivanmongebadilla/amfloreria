@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { use, useState } from "react";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { ProductCard } from "@/src/components/ui/ProductCard";
@@ -9,8 +9,8 @@ import { ProductModal } from "@/src/components/ui/ProductModal";
 import { products } from "@/src/data/products";
 import { categoryMeta } from "@/src/data/categoryMeta";
 
-export default async function Category({ params,}: { params: Promise<{ category: string }>;}) {
-  const { category } = await params;
+export default function Category({ params,}: { params: Promise<{ category: string }>;}) {
+  const { category } = use(params);
   const meta = categoryMeta[category as keyof typeof categoryMeta];
 
   const filteredProducts = products.filter(

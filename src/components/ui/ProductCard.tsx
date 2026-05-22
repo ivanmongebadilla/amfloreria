@@ -32,7 +32,7 @@ export function ProductCard({
         </div>
 
         <p className="text-sm uppercase tracking-[0.15em] text-neutral-500">
-          {price}
+          {`$${price} MXN`}
         </p>
 
         <div className="flex gap-2">

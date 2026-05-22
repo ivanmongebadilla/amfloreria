@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { CollectionCard } from "@/src/components/ui/CollectionCard";
-import { categories } from "@/src/data/categories";
+import { collections } from "@/src/data/collections";
 
 export default function Home() {
   return (
@@ -80,7 +80,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-              {categories.map((collection) => (
+              {collections.map((collection) => (
                 <CollectionCard
                   key={collection.title}
                   title={collection.title}

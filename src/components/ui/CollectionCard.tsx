@@ -4,12 +4,14 @@ interface CollectionCardProps {
   title: string;
   description: string;
   image: string;
+  href: string;
 }
 
 export function CollectionCard({
   title,
   description,
   image,
+  href
 }: CollectionCardProps) {
   return (
     <article className="group relative overflow-hidden rounded-[1.75rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm">
@@ -36,7 +38,7 @@ export function CollectionCard({
         </p>
 
         <Link
-          href="/shop"
+          href={href}
           className="w-fit rounded-full border border-white/30 bg-white/10 px-4 py-2 text-[10px] uppercase tracking-[0.2em] backdrop-blur-md transition-colors hover:bg-white hover:text-black sm:px-5 sm:py-2.5 sm:text-xs"
         >
           Explorar

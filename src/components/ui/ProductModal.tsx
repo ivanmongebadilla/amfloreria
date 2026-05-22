@@ -5,10 +5,10 @@ interface ProductModalProps {
   onClose: () => void;
   product: {
     title: string;
-    price: string;
+    price: number;
     image: string;
     flowers: string[];
-    quantity: string;
+    // quantity: string;
     description: string;
   } | null;
 }
@@ -72,13 +72,13 @@ export function ProductModal({
               </div>
             </div>
 
-            <div className="space-y-2">
+            {/* <div className="space-y-2">
               <h3 className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Cantidad
               </h3>
 
               <p className="text-lg text-neutral-700">{product.quantity}</p>
-            </div>
+            </div> */}
 
             <div className="space-y-3">
               <label className="text-xs uppercase tracking-[0.3em] text-neutral-500">

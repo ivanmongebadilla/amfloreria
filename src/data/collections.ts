@@ -8,20 +8,24 @@ export const collections = [
     title: "Romance",
     description: "Bouquets suaves y delicados.",
     image: romance1.src,
+    href: "/shop/collections/romance",
   },
   {
     title: "Luxury",
     description: "Arreglos premium sofisticados.",
     image: luxury1.src,
+    href: "/shop/collections/luxury",
   },
   {
     title: "Eventos",
     description: "Diseños para bodas y celebraciones.",
     image: events1.src,
+    href: "/shop/collections/eventos",
   },
   {
     title: "Seasonal",
     description: "Inspiradas en la temporada.",
     image: seasonal2.src,
+    href: "/shop/collections/seasonal",
   },
 ];

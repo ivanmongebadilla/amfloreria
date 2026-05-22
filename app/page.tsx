@@ -86,6 +86,7 @@ export default function Home() {
                   title={collection.title}
                   description={collection.description}
                   image={collection.image}
+                  href={collection.href}
                 />
               ))}
             </div>

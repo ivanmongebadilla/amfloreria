@@ -2,33 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { CollectionCard } from "@/src/components/ui/CollectionCard";
-
-const collections = [
-  {
-    title: "Romance",
-    description: "Bouquets suaves y delicados.",
-    image:
-      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Luxury",
-    description: "Arreglos premium sofisticados.",
-    image:
-      "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Eventos",
-    description: "Diseños para bodas y celebraciones.",
-    image:
-      "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Seasonal",
-    description: "Inspiradas en la temporada.",
-    image:
-      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
-  },
-];
+import { categories } from "@/src/data/categories";
 
 export default function Home() {
   return (
@@ -106,7 +80,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-              {collections.map((collection) => (
+              {categories.map((collection) => (
                 <CollectionCard
                   key={collection.title}
                   title={collection.title}

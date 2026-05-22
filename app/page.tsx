@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { CollectionCard } from "@/src/components/ui/CollectionCard";
-import { collections } from "@/src/data/collections";
+import { collections } from "../src/data/collections"
 
 export default function Home() {
   return (

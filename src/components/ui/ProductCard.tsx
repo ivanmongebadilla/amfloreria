@@ -2,7 +2,7 @@
 
 interface ProductCardProps {
   title: string;
-  price: string;
+  price: number;
   image: string;
   onInfoClick: () => void;
 }

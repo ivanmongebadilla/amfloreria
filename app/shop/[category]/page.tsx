@@ -9,11 +9,12 @@ import { ProductModal } from "@/src/components/ui/ProductModal";
 import { products } from "@/src/data/products";
 import { categoryMeta } from "@/src/data/categoryMeta";
 
-export default function Category({ params }: { params: { category: string } }) {
-  const meta = categoryMeta[params.category as keyof typeof categoryMeta];
+export default async function Category({ params,}: { params: Promise<{ category: string }>;}) {
+  const { category } = await params;
+  const meta = categoryMeta[category as keyof typeof categoryMeta];
 
   const filteredProducts = products.filter(
-    (product) => product.category === params.category
+    (product) => product.category === category
   );
 
   const [selectedProduct, setSelectedProduct] = useState<(typeof filteredProducts)[0] | null>(null);

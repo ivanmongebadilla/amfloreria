@@ -6,11 +6,17 @@ import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { ProductCard } from "@/src/components/ui/ProductCard";
 import { ProductModal } from "@/src/components/ui/ProductModal";
+import { products } from "@/src/data/products";
+import { categoryMeta } from "@/src/data/categoryMeta";
 
-export default function Category() {
-  const [selectedProduct, setSelectedProduct] = useState<
-    (typeof bouquets)[0] | null
-  >(null);
+export default function Category({ params }: { params: { category: string } }) {
+  const meta = categoryMeta[params.category as keyof typeof categoryMeta];
+
+  const filteredProducts = products.filter(
+    (product) => product.category === params.category
+  );
+
+  const [selectedProduct, setSelectedProduct] = useState<(typeof filteredProducts)[0] | null>(null);
 
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 text-[var(--foreground)] sm:px-6 md:px-12 lg:px-20">
@@ -26,41 +32,41 @@ export default function Category() {
           </Link>
         </div>
 
-        <section className="relative overflow-hidden rounded-[2.5rem] border border-white/50 bg-gradient-to-br from-[var(--beige)] via-[var(--blush)] to-[var(--sage)] px-6 py-12 shadow-2xl shadow-black/5 sm:px-10 md:px-14 md:py-16">
+        <section className="relative overflow-hidden rounded-[2.5rem] border border-white/50 shadow-2xl shadow-black/5">
           <div
-            className="absolute inset-0 opacity-10 blur-[2px]"
+            className="absolute inset-0"
             style={{
-              backgroundImage:
-                'url("https://images.unsplash.com/photo-1468327768560-75b778cbb551?q=80&w=1200&auto=format&fit=crop")',
+              backgroundImage: `url(${meta.heroImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           />
 
-          <div className="relative z-10 mx-auto max-w-3xl space-y-4 text-center">
-            <p className="text-xs uppercase tracking-[0.35em] text-neutral-600">
-              Ramos
+          <div className="absolute inset-0 bg-black/30" />
+
+          <div className="relative z-10 mx-auto flex min-h-[260px] max-w-3xl flex-col items-center justify-center px-6 py-16 text-center text-white">
+            <p className="text-xs uppercase tracking-[0.35em] text-white/80">
+              {meta.title}
             </p>
 
-            <h1 className="font-heading text-4xl leading-none md:text-6xl">
-              Bouquets diseñados para emocionar.
+            <h1 className="mt-4 font-heading text-4xl leading-none md:text-6xl">
+              {meta.title}
             </h1>
 
-            <p className="text-sm leading-7 text-neutral-700 sm:text-base sm:leading-8">
-              Descubre ramos florales elegantes creados para celebrar momentos
-              especiales, regalar emociones y transformar cualquier espacio.
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-white/90 sm:text-base sm:leading-8">
+              {meta.subtitle}
             </p>
           </div>
         </section>
 
         <section className="grid grid-cols-1 gap-4 min-[450px]:grid-cols-2 lg:gap-6">
-          {bouquets.map((bouquet) => (
+          {filteredProducts.map((product) => (
             <ProductCard
-              key={bouquet.title}
-              title={bouquet.title}
-              price={bouquet.price}
-              image={bouquet.image}
-              onInfoClick={() => setSelectedProduct(bouquet)}
+              key={product.id}
+              title={product.title}
+              price={product.price}
+              image={product.image}
+              onInfoClick={() => setSelectedProduct(product)}
             />
           ))}
         </section>

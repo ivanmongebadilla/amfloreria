@@ -5,7 +5,8 @@ export const products = [
     title: "Romance Blush Bouquet",
     category: "ramos",
     collections: ["romance"],
-    image: "/images/products/romance-blush-bouquet.jpg",
+    image:
+      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Rosas", "Peonías", "Eucalipto"],
     description:
       "Bouquet delicado con tonos blush diseñado para momentos románticos.",
@@ -18,7 +19,8 @@ export const products = [
     title: "Luxury Ivory Arrangement",
     category: "arreglos-florales",
     collections: ["luxury"],
-    image: "/images/products/luxury-ivory-arrangement.jpg",
+    image:
+      "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Blancas", "Orquídeas", "Hydrangeas"],
     description:
       "Arreglo premium con flores blancas y diseño sofisticado.",
@@ -31,7 +33,8 @@ export const products = [
     title: "Golden Sunset Bouquet",
     category: "ramos",
     collections: ["seasonal"],
-    image: "/images/products/golden-sunset-bouquet.jpg",
+    image:
+      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Girasoles", "Rosas Amarillas", "Solidago"],
     description:
       "Bouquet cálido inspirado en atardeceres dorados.",
@@ -44,7 +47,8 @@ export const products = [
     title: "Eternal White Tribute",
     category: "condolencias",
     collections: ["luxury"],
-    image: "/images/products/eternal-white-tribute.jpg",
+    image:
+      "https://images.unsplash.com/photo-1468327768560-75b778cbb551?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Lirios", "Rosas Blancas", "Claveles"],
     description:
       "Diseño elegante para acompañar momentos de despedida.",
@@ -57,7 +61,8 @@ export const products = [
     title: "Spring Garden Centerpiece",
     category: "eventos",
     collections: ["seasonal"],
-    image: "/images/products/spring-garden-centerpiece.jpg",
+    image:
+      "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Tulipanes", "Ranúnculos", "Margaritas"],
     description:
       "Centro de mesa fresco ideal para celebraciones primaverales.",
@@ -70,7 +75,8 @@ export const products = [
     title: "Velvet Romance",
     category: "ramos",
     collections: ["romance", "luxury"],
-    image: "/images/products/velvet-romance.jpg",
+    image:
+      "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Rojas", "Peonías", "Eucalipto"],
     description:
       "Bouquet intenso y elegante con tonos profundos.",
@@ -83,7 +89,8 @@ export const products = [
     title: "Soft Ivory Bouquet",
     category: "ramos",
     collections: ["luxury"],
-    image: "/images/products/soft-ivory-bouquet.jpg",
+    image:
+      "https://images.unsplash.com/photo-1526397751294-331021109fbd?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Cremas", "Lisanthus", "Hydrangeas"],
     description:
       "Diseño minimalista y sofisticado en tonos neutros.",
@@ -96,7 +103,8 @@ export const products = [
     title: "Autumn Bloom Arrangement",
     category: "arreglos-florales",
     collections: ["seasonal"],
-    image: "/images/products/autumn-bloom-arrangement.jpg",
+    image:
+      "https://images.unsplash.com/photo-1508610048659-a06b669e3321?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Dalias", "Girasoles", "Eucalipto"],
     description:
       "Arreglo inspirado en colores cálidos de otoño.",
@@ -109,7 +117,8 @@ export const products = [
     title: "Pure Serenity",
     category: "condolencias",
     collections: ["luxury"],
-    image: "/images/products/pure-serenity.jpg",
+    image:
+      "https://images.unsplash.com/photo-1455656678494-4d1b5f3e7ad1?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Lirios Blancos", "Orquídeas", "Rosas Blancas"],
     description:
       "Diseño floral sobrio y elegante para condolencias.",
@@ -122,20 +131,23 @@ export const products = [
     title: "Champagne Roses",
     category: "ramos",
     collections: ["luxury", "romance"],
-    image: "/images/products/champagne-roses.jpg",
+    image:
+      "https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Champagne", "Peonías", "Eucalipto"],
     description:
       "Bouquet premium con estética sofisticada y romántica.",
     price: 1900,
     featured: true,
   },
+
   {
     id: 11,
     slug: "minimal-white-vase",
     title: "Minimal White Vase",
     category: "arreglos-florales",
     collections: ["luxury"],
-    image: "/images/products/minimal-white-vase.jpg",
+    image:
+      "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Tulipanes Blancos", "Hydrangeas"],
     description:
       "Arreglo moderno ideal para interiores minimalistas.",
@@ -148,7 +160,8 @@ export const products = [
     title: "Pink Whisper",
     category: "ramos",
     collections: ["romance"],
-    image: "/images/products/pink-whisper.jpg",
+    image:
+      "https://images.unsplash.com/photo-1487070183336-b863922373d4?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Rosas", "Ranúnculos", "Lisanthus"],
     description:
       "Bouquet delicado con tonos suaves y femeninos.",
@@ -161,7 +174,8 @@ export const products = [
     title: "Sunlit Celebration",
     category: "eventos",
     collections: ["seasonal"],
-    image: "/images/products/sunlit-celebration.jpg",
+    image:
+      "https://images.unsplash.com/photo-1468327768560-75b778cbb551?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Girasoles", "Tulipanes", "Margaritas"],
     description:
       "Diseño vibrante ideal para celebraciones al aire libre.",
@@ -174,7 +188,8 @@ export const products = [
     title: "Classic Red Roses",
     category: "ramos",
     collections: ["romance"],
-    image: "/images/products/classic-red-roses.jpg",
+    image:
+      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Rosas Rojas", "Eucalipto"],
     description:
       "El clásico bouquet romántico de rosas rojas.",
@@ -187,7 +202,8 @@ export const products = [
     title: "White Orchid Elegance",
     category: "arreglos-florales",
     collections: ["luxury"],
-    image: "/images/products/white-orchid-elegance.jpg",
+    image:
+      "https://images.unsplash.com/photo-1512428813834-c702c7702b78?q=80&w=1200&auto=format&fit=crop",
     flowers: ["Orquídeas Blancas", "Hydrangeas"],
     description:
       "Diseño elegante y contemporáneo con orquídeas premium.",
@@ -195,71 +211,216 @@ export const products = [
     featured: true,
   },
 
-  // ... continuar mismo patrón ...
-
   {
-    id: 56,
-    slug: "blush-serenity-tribute",
-    title: "Blush Serenity Tribute",
+    id: 16,
+    slug: "lavender-serenity",
+    title: "Lavender Serenity",
     category: "condolencias",
-    collections: ["romance"],
-    image: "/images/products/blush-serenity-tribute.jpg",
-    flowers: ["Rosas Rosas", "Lirios", "Hydrangeas"],
+    collections: ["seasonal"],
+    image:
+      "https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Lavanda", "Lirios", "Claveles Blancos"],
     description:
-      "Diseño suave y elegante para acompañar despedidas.",
-    price: 3400,
+      "Arreglo sereno en tonos suaves y relajantes.",
+    price: 2800,
     featured: false,
   },
   {
-    id: 57,
-    slug: "golden-romance-bouquet",
-    title: "Golden Romance Bouquet",
+    id: 17,
+    slug: "peony-dream",
+    title: "Peony Dream",
     category: "ramos",
-    collections: ["romance", "seasonal"],
-    image: "/images/products/golden-romance-bouquet.jpg",
-    flowers: ["Rosas Durazno", "Girasoles", "Peonías"],
+    collections: ["romance", "luxury"],
+    image:
+      "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Peonías", "Rosas Rosas", "Lisanthus"],
     description:
-      "Bouquet cálido con estética romántica moderna.",
-    price: 1720,
+      "Bouquet premium inspirado en jardines europeos.",
+    price: 2100,
     featured: true,
   },
   {
-    id: 58,
-    slug: "ivory-luxury-vase",
-    title: "Ivory Luxury Vase",
+    id: 18,
+    slug: "modern-greenery",
+    title: "Modern Greenery",
     category: "arreglos-florales",
     collections: ["luxury"],
-    image: "/images/products/ivory-luxury-vase.jpg",
-    flowers: ["Hydrangeas", "Orquídeas", "Rosas Blancas"],
+    image:
+      "https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Eucalipto", "Monstera", "Orquídeas"],
     description:
-      "Arreglo premium ideal para decoración elegante.",
-    price: 3600,
-    featured: true,
+      "Diseño moderno con enfoque en texturas verdes.",
+    price: 1950,
+    featured: false,
   },
   {
-    id: 59,
-    slug: "elegant-garden-event",
-    title: "Elegant Garden Event",
+    id: 19,
+    slug: "summer-bloom-basket",
+    title: "Summer Bloom Basket",
     category: "eventos",
-    collections: ["seasonal", "luxury"],
-    image: "/images/products/elegant-garden-event.jpg",
-    flowers: ["Tulipanes", "Hydrangeas", "Peonías"],
+    collections: ["seasonal"],
+    image:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Girasoles", "Dalias", "Rosas Amarillas"],
     description:
-      "Diseños refinados para eventos tipo garden party.",
-    price: 6200,
-    featured: true,
+      "Canasta floral vibrante para eventos veraniegos.",
+    price: 2400,
+    featured: false,
   },
   {
-    id: 60,
-    slug: "heavenly-white-arrangement",
-    title: "Heavenly White Arrangement",
+    id: 20,
+    slug: "ivory-grace-tribute",
+    title: "Ivory Grace Tribute",
     category: "condolencias",
     collections: ["luxury"],
-    image: "/images/products/heavenly-white-arrangement.jpg",
-    flowers: ["Lirios Blancos", "Rosas Blancas", "Hydrangeas"],
+    image:
+      "https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Rosas Blancas", "Hydrangeas", "Lirios"],
     description:
-      "Arreglo floral clásico y elegante para condolencias.",
+      "Diseño elegante y respetuoso para ceremonias.",
+    price: 3900,
+    featured: true,
+  },
+
+  {
+    id: 21,
+    slug: "garden-romance",
+    title: "Garden Romance",
+    category: "ramos",
+    collections: ["romance", "seasonal"],
+    image:
+      "https://images.unsplash.com/photo-1520637836862-4d197d17c93a?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Tulipanes", "Peonías", "Margaritas"],
+    description:
+      "Bouquet inspirado en jardines florales europeos.",
+    price: 1320,
+    featured: false,
+  },
+  {
+    id: 22,
+    slug: "rose-gold-elegance",
+    title: "Rose Gold Elegance",
+    category: "arreglos-florales",
+    collections: ["luxury", "romance"],
+    image:
+      "https://images.unsplash.com/photo-1468327768560-75b778cbb551?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Rosas Champagne", "Orquídeas", "Eucalipto"],
+    description:
+      "Diseño sofisticado con tonos rose gold.",
+    price: 2700,
+    featured: true,
+  },
+  {
+    id: 23,
+    slug: "winter-white-centerpiece",
+    title: "Winter White Centerpiece",
+    category: "eventos",
+    collections: ["seasonal", "luxury"],
+    image:
+      "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Hydrangeas", "Rosas Blancas", "Pino"],
+    description:
+      "Centro de mesa elegante inspirado en invierno.",
+    price: 3200,
+    featured: true,
+  },
+  {
+    id: 24,
+    slug: "blush-harmony",
+    title: "Blush Harmony",
+    category: "ramos",
+    collections: ["romance"],
+    image:
+      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Rosas Rosas", "Ranúnculos", "Peonías"],
+    description:
+      "Bouquet femenino con tonos blush y textura suave.",
+    price: 1480,
+    featured: false,
+  },
+  {
+    id: 25,
+    slug: "timeless-white",
+    title: "Timeless White",
+    category: "condolencias",
+    collections: ["luxury"],
+    image:
+      "https://images.unsplash.com/photo-1455656678494-4d1b5f3e7ad1?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Lirios", "Hydrangeas", "Claveles"],
+    description:
+      "Diseño clásico de condolencias en tonos blancos.",
+    price: 3500,
+    featured: false,
+  },
+
+  {
+    id: 26,
+    slug: "royal-orchid-display",
+    title: "Royal Orchid Display",
+    category: "arreglos-florales",
+    collections: ["luxury"],
+    image:
+      "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Orquídeas", "Hydrangeas"],
+    description:
+      "Arreglo premium con orquídeas de larga duración.",
     price: 4200,
     featured: true,
+  },
+  {
+    id: 27,
+    slug: "spring-romance-bouquet",
+    title: "Spring Romance Bouquet",
+    category: "ramos",
+    collections: ["romance", "seasonal"],
+    image:
+      "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Tulipanes", "Peonías", "Lisanthus"],
+    description:
+      "Diseño fresco y delicado inspirado en primavera.",
+    price: 1580,
+    featured: false,
+  },
+  {
+    id: 28,
+    slug: "elegant-reception-florals",
+    title: "Elegant Reception Florals",
+    category: "eventos",
+    collections: ["luxury"],
+    image:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Rosas Blancas", "Orquídeas", "Hydrangeas"],
+    description:
+      "Diseños premium para recepciones y bodas.",
+    price: 5200,
+    featured: true,
+  },
+  {
+    id: 29,
+    slug: "golden-peony-arrangement",
+    title: "Golden Peony Arrangement",
+    category: "arreglos-florales",
+    collections: ["luxury", "seasonal"],
+    image:
+      "https://images.unsplash.com/photo-1518709594023-6eab9bab7b23?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Peonías", "Dalias", "Eucalipto"],
+    description:
+      "Diseño sofisticado con tonos cálidos y texturas suaves.",
+    price: 2550,
+    featured: false,
+  },
+  {
+    id: 30,
+    slug: "soft-pastel-bouquet",
+    title: "Soft Pastel Bouquet",
+    category: "ramos",
+    collections: ["romance"],
+    image:
+      "https://images.unsplash.com/photo-1487070183336-b863922373d4?q=80&w=1200&auto=format&fit=crop",
+    flowers: ["Tulipanes", "Rosas Cremas", "Ranúnculos"],
+    description:
+      "Bouquet romántico en tonos pastel suaves.",
+    price: 1290,
+    featured: false,
   },
 ];

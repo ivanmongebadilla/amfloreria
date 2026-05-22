@@ -2,31 +2,31 @@ import Link from "next/link";
 import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { CollectionCard } from "@/src/components/ui/CollectionCard";
+import romance1 from "../public/images/romance1.jpg"
+import luxury1 from "../public/images/luxury.jpg"
+import events1 from "../public/images/events1.png"
+import seasonal2 from "../public/images/seasonal2.jpg"
 
 const collections = [
   {
     title: "Romance",
     description: "Bouquets suaves y delicados.",
-    image:
-      "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
+    image: romance1.src,
   },
   {
     title: "Luxury",
     description: "Arreglos premium sofisticados.",
-    image:
-      "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
+    image: luxury1.src,
   },
   {
     title: "Eventos",
     description: "Diseños para bodas y celebraciones.",
-    image:
-      "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
+    image: events1.src,
   },
   {
     title: "Seasonal",
     description: "Inspiradas en la temporada.",
-    image:
-      "https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1200&auto=format&fit=crop",
+    image: seasonal2.src,
   },
 ];
 

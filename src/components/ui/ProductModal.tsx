@@ -145,9 +145,9 @@ export function ProductModal({
 
             <button
               onClick={handleAddToCart}
-              className={`w-full rounded-full px-6 py-4 text-xs uppercase tracking-[0.25em] text-white transition-all duration-300 active:scale-[0.98] ${
+              className={`w-full rounded-full px-6 py-4 text-xs uppercase tracking-[0.25em] text-white transition-all duration-500 active:scale-[0.98] ${
                 isAdding
-                  ? "bg-neutral-800 shadow-xl shadow-black/10"
+                  ? "scale-[0.99] bg-emerald-900/80 ring-1 ring-white/10 shadow-xl shadow-emerald-950/10"
                   : "bg-[var(--foreground)] hover:scale-[1.01] hover:opacity-90"
               }`}
             >

@@ -1,29 +1,18 @@
 import OrderSummaryItem from "./OrderSummaryItem";
-
-type CartItem = {
-  id: number;
-  title: string;
-  image: string;
-  price: number;
-  quantity: number;
-};
+import CartItem from "@/src/types/cart";
 
 type OrderSummaryProps = {
   items: CartItem[];
   onRemove: (id: number) => void;
 };
 
-export default function OrderSummary({
-  items,
-  onRemove,
-}: OrderSummaryProps) {
+export default function OrderSummary({ items, onRemove,}: OrderSummaryProps) {
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
 
   const deliveryFee = items.length > 0 ? 150 : 0;
-
   const total = subtotal + deliveryFee;
 
   return (
@@ -48,11 +37,7 @@ export default function OrderSummary({
         {items.map((item) => (
           <OrderSummaryItem
             key={item.id}
-            id={item.id}
-            title={item.title}
-            image={item.image}
-            price={item.price}
-            quantity={item.quantity}
+            item={item}
             onRemove={onRemove}
           />
         ))}

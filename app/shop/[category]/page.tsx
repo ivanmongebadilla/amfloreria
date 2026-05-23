@@ -64,9 +64,7 @@ export default function Category({ params,}: { params: Promise<{ category: strin
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
-              title={product.title}
-              price={product.price}
-              image={product.image}
+              product={product}
               onInfoClick={() => setSelectedProduct(product)}
             />
           ))}

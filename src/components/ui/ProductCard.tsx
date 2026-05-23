@@ -1,23 +1,19 @@
 "use client";
 
+import Product from "@/src/types/products";
+
 interface ProductCardProps {
-  title: string;
-  price: number;
-  image: string;
+  product: Product;
   onInfoClick: () => void;
 }
 
-export function ProductCard({
-  title,
-  price,
-  image,
-  onInfoClick,
-}: ProductCardProps) {
+export function ProductCard({ product, onInfoClick,}: ProductCardProps) {
+
   return (
     <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm">
       <div
         className="h-[250px] bg-cover bg-center sm:h-[340px]"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${product.image})` }}
       />
 
       <div className="space-y-4 p-4 sm:p-5">
@@ -27,12 +23,12 @@ export function ProductCard({
           </p>
 
           <h2 className="font-heading text-2xl leading-none sm:text-3xl">
-            {title}
+            {product.title}
           </h2>
         </div>
 
         <p className="text-sm uppercase tracking-[0.15em] text-neutral-500">
-          {`$${price} MXN`}
+          {`$${product.price} MXN`}
         </p>
 
         <div className="flex gap-2">

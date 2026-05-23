@@ -36,7 +36,7 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
 
     setTimeout(() => {
       setIsAdding(false);
-    }, 1200);
+    }, 1000);
   };
 
   return (
@@ -74,11 +74,11 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
               onClick={handleAddToCart}
               className={`flex-1 rounded-full px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-all duration-300 active:scale-95 sm:text-xs ${
                 isAdding
-                  ? "scale-[1.02] bg-emerald-600 shadow-lg shadow-emerald-500/20"
+                  ? "bg-neutral-800 shadow-lg shadow-black/10"
                   : "bg-[var(--foreground)] hover:scale-[1.01] hover:opacity-90"
               }`}
             >
-              {isAdding ? "Agregado ✓" : "Agregar"}
+              {isAdding ? "Agregado" : "Agregar"}
             </button>
           </div>
 

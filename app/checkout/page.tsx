@@ -2,6 +2,7 @@
 import { Navbar } from "@/src/components/shared/Navbar";
 import { CheckoutForm } from "@/src/components/checkout/CheckoutForm";
 import CheckoutFormData from "@/src/types/checkoutform";
+import { DeliverySchedule } from "@/src/components/checkout/DeliverySchedule";
 import { useState } from "react";
 
 const orderItems = [
@@ -62,55 +63,27 @@ export default function CheckoutPage() {
                 <CheckoutForm formData={formData} setFormData={setFormData}/>
             </section>
 
+            <section id="deliveryschedule">
+                <DeliverySchedule/>
+            </section>
+
+            <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+                <h2 className="text-lg font-medium">Mensaje de Tarjeta</h2>
+
+                <textarea
+                    placeholder="Escribe un mensaje especial para la tarjeta"
+                    rows={5}
+                    className="mt-5 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"
+                />
+            </section>
+
         </div>
 
     </main>
 
     // <main className="min-h-screen bg-[#faf7f5] px-4 py-6 text-[#1f1f1f]">
     //   <div className="mx-auto flex w-full max-w-2xl flex-col gap-6">
-    //     <div>
-    //       <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">
-    //         A|M Florería
-    //       </p>
 
-    //       <h1 className="mt-2 text-3xl font-light tracking-tight">
-    //         Checkout
-    //       </h1>
-
-    //       <p className="mt-2 text-sm text-neutral-500">
-    //         Finaliza tu pedido y agenda la entrega de tus flores.
-    //       </p>
-    //     </div>
-
-    //     <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-    //       <h2 className="text-lg font-medium">Delivery info</h2>
-
-    //       <div className="mt-5 grid gap-4">
-    //         <input
-    //           type="text"
-    //           placeholder="Nombre completo"
-    //           className="h-12 rounded-2xl border border-neutral-200 bg-white px-4 text-sm outline-none transition focus:border-black"
-    //         />
-
-    //         <input
-    //           type="tel"
-    //           placeholder="Teléfono"
-    //           className="h-12 rounded-2xl border border-neutral-200 bg-white px-4 text-sm outline-none transition focus:border-black"
-    //         />
-
-    //         <input
-    //           type="text"
-    //           placeholder="Dirección de entrega"
-    //           className="h-12 rounded-2xl border border-neutral-200 bg-white px-4 text-sm outline-none transition focus:border-black"
-    //         />
-
-    //         <textarea
-    //           placeholder="Instrucciones de entrega"
-    //           rows={4}
-    //           className="rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"
-    //         />
-    //       </div>
-    //     </section>
 
     //     <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
     //       <h2 className="text-lg font-medium">Date & time delivery</h2>

@@ -72,9 +72,9 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
 
             <button
               onClick={handleAddToCart}
-              className={`flex-1 rounded-full px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-all duration-300 active:scale-95 sm:text-xs ${
+              className={`flex-1 rounded-full px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-all duration-500 active:scale-95 sm:text-xs ${
                 isAdding
-                  ? "bg-neutral-800 shadow-lg shadow-black/10"
+                  ? "scale-[0.985] bg-emerald-900/80 ring-1 ring-white/10 shadow-lg shadow-emerald-950/10"
                   : "bg-[var(--foreground)] hover:scale-[1.01] hover:opacity-90"
               }`}
             >

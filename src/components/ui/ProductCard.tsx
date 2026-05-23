@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useCartStore } from "@/src/store/cartStore";
 import Product from "@/src/types/products";
 
 interface ProductCardProps {
@@ -18,6 +19,8 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
   const decreaseQuantity = () => {
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
   };
+
+  const addItem = useCartStore((state) => state.addItem);
 
   return (
     <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm">
@@ -50,7 +53,17 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
               Info
             </button>
 
-            <button className="flex-1 rounded-full bg-[var(--foreground)] px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:text-xs">
+            <button
+                onClick={() =>
+                          addItem({
+                            id: product.id,
+                            title: product.title,
+                            image: product.image,
+                            price: product.price,
+                            quantity,
+                          })
+                        } 
+                className="flex-1 rounded-full bg-[var(--foreground)] px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:text-xs">
               Agregar
             </button>
           </div>

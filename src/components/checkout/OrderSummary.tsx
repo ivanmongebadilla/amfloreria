@@ -24,7 +24,7 @@ export default function OrderSummary({ items, onRemove,}: OrderSummaryProps) {
           </p>
 
           <h2 className="mt-1 text-xl font-medium text-neutral-900">
-            Order Summary
+            Resumen del Pedido
           </h2>
         </div>
 

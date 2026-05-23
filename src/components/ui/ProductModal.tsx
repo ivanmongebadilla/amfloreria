@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -18,6 +19,17 @@ export function ProductModal({
   onClose,
   product,
 }: ProductModalProps) {
+
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  };
+
   if (!isOpen || !product) return null;
 
   return (
@@ -47,7 +59,7 @@ export function ProductModal({
               </h2>
 
               <p className="text-sm uppercase tracking-[0.2em] text-neutral-500">
-                {product.price}
+                {`$${product.price} MXN`}
               </p>
             </div>
 
@@ -72,13 +84,31 @@ export function ProductModal({
               </div>
             </div>
 
-            {/* <div className="space-y-2">
+            <div className="space-y-3">
               <h3 className="text-xs uppercase tracking-[0.3em] text-neutral-500">
                 Cantidad
               </h3>
 
-              <p className="text-lg text-neutral-700">{product.quantity}</p>
-            </div> */}
+              <div className="flex items-center justify-center gap-4 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3">
+                <button
+                  onClick={decreaseQuantity}
+                  className="text-lg leading-none transition-opacity hover:opacity-60"
+                >
+                  −
+                </button>
+
+                <span className="min-w-[24px] text-center text-sm font-medium">
+                  {quantity}
+                </span>
+
+                <button
+                  onClick={increaseQuantity}
+                  className="text-lg leading-none transition-opacity hover:opacity-60"
+                >
+                  +
+                </button>
+              </div>
+            </div>
 
             <div className="space-y-3">
               <label className="text-xs uppercase tracking-[0.3em] text-neutral-500">

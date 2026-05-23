@@ -151,7 +151,7 @@ export function ProductModal({
                   : "bg-[var(--foreground)] hover:scale-[1.01] hover:opacity-90"
               }`}
             >
-              {isAdding ? "Agregado al carrito" : "Agregar al carrito"}
+              {isAdding ? "Agregado" : "Agregar"}
             </button>
           </div>
         </div>

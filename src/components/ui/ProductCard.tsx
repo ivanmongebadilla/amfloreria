@@ -11,6 +11,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, onInfoClick }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1);
+  const [isAdding, setIsAdding] = useState(false);
 
   const increaseQuantity = () => {
     setQuantity((prev) => prev + 1);
@@ -22,10 +23,26 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
 
   const addItem = useCartStore((state) => state.addItem);
 
+  const handleAddToCart = () => {
+    addItem({
+      id: product.id,
+      title: product.title,
+      image: product.image,
+      price: product.price,
+      quantity,
+    });
+
+    setIsAdding(true);
+
+    setTimeout(() => {
+      setIsAdding(false);
+    }, 1200);
+  };
+
   return (
-    <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm">
+    <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
       <div
-        className="h-[250px] bg-cover bg-center sm:h-[340px]"
+        className="h-[250px] bg-cover bg-center transition-transform duration-700 hover:scale-[1.02] sm:h-[340px]"
         style={{ backgroundImage: `url(${product.image})` }}
       />
 
@@ -48,41 +65,38 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
           <div className="flex gap-2">
             <button
               onClick={onInfoClick}
-              className="flex-1 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-colors hover:bg-[var(--blush)]/40 sm:text-xs"
+              className="flex-1 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-all duration-300 hover:bg-[var(--blush)]/40 sm:text-xs"
             >
               Info
             </button>
 
             <button
-                onClick={() =>
-                          addItem({
-                            id: product.id,
-                            title: product.title,
-                            image: product.image,
-                            price: product.price,
-                            quantity,
-                          })
-                        } 
-                className="flex-1 rounded-full bg-[var(--foreground)] px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:text-xs">
-              Agregar
+              onClick={handleAddToCart}
+              className={`flex-1 rounded-full px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-all duration-300 active:scale-95 sm:text-xs ${
+                isAdding
+                  ? "scale-[1.02] bg-emerald-600 shadow-lg shadow-emerald-500/20"
+                  : "bg-[var(--foreground)] hover:scale-[1.01] hover:opacity-90"
+              }`}
+            >
+              {isAdding ? "Agregado ✓" : "Agregar"}
             </button>
           </div>
 
           <div className="flex items-center justify-center gap-4 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3">
             <button
               onClick={decreaseQuantity}
-              className="text-lg leading-none transition-opacity hover:opacity-60"
+              className="text-lg leading-none transition-all duration-200 hover:scale-110 hover:opacity-60 active:scale-95"
             >
               −
             </button>
 
-            <span className="min-w-[24px] text-center text-sm font-medium">
+            <span className="min-w-[24px] text-center text-sm font-medium transition-all duration-200">
               {quantity}
             </span>
 
             <button
               onClick={increaseQuantity}
-              className="text-lg leading-none transition-opacity hover:opacity-60"
+              className="text-lg leading-none transition-all duration-200 hover:scale-110 hover:opacity-60 active:scale-95"
             >
               +
             </button>

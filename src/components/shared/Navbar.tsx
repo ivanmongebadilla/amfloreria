@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
+// import { ShoppingBag } from "lucide-react";
+import CartIcon from "../cart/CartIcon";
 
 interface NavbarProps {
   showShopLink?: boolean;
@@ -29,12 +30,20 @@ export function Navbar({ showShopLink = true }: NavbarProps) {
           <Link href="/#contacto">Contacto</Link>
         </nav>
 
-        <Link
+        <Link href="/checkout">
+          <div 
+            className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40"
+          >
+            <CartIcon />
+          </div>
+        </Link>
+
+        {/* <Link
           href="/shop"
           className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40"
         >
           <ShoppingBag size={18} />
-        </Link>
+        </Link> */}
       </div>
     </header>
   );

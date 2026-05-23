@@ -1,23 +1,32 @@
 "use client";
 
+import { useState } from "react";
+import { useCartStore } from "@/src/store/cartStore";
+import Product from "@/src/types/products";
+
 interface ProductCardProps {
-  title: string;
-  price: number;
-  image: string;
+  product: Product;
   onInfoClick: () => void;
 }
 
-export function ProductCard({
-  title,
-  price,
-  image,
-  onInfoClick,
-}: ProductCardProps) {
+export function ProductCard({ product, onInfoClick }: ProductCardProps) {
+  const [quantity, setQuantity] = useState(1);
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  };
+
+  const addItem = useCartStore((state) => state.addItem);
+
   return (
     <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm">
       <div
         className="h-[250px] bg-cover bg-center sm:h-[340px]"
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${product.image})` }}
       />
 
       <div className="space-y-4 p-4 sm:p-5">
@@ -27,25 +36,57 @@ export function ProductCard({
           </p>
 
           <h2 className="font-heading text-2xl leading-none sm:text-3xl">
-            {title}
+            {product.title}
           </h2>
         </div>
 
         <p className="text-sm uppercase tracking-[0.15em] text-neutral-500">
-          {`$${price} MXN`}
+          {`$${product.price} MXN`}
         </p>
 
-        <div className="flex gap-2">
-          <button
-            onClick={onInfoClick}
-            className="flex-1 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-colors hover:bg-[var(--blush)]/40 sm:text-xs"
-          >
-            Info
-          </button>
+        <div className="flex flex-col gap-2">
+          <div className="flex gap-2">
+            <button
+              onClick={onInfoClick}
+              className="flex-1 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3 text-[10px] uppercase tracking-[0.2em] transition-colors hover:bg-[var(--blush)]/40 sm:text-xs"
+            >
+              Info
+            </button>
 
-          <button className="flex-1 rounded-full bg-[var(--foreground)] px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:text-xs">
-            Agregar
-          </button>
+            <button
+                onClick={() =>
+                          addItem({
+                            id: product.id,
+                            title: product.title,
+                            image: product.image,
+                            price: product.price,
+                            quantity,
+                          })
+                        } 
+                className="flex-1 rounded-full bg-[var(--foreground)] px-4 py-3 text-[10px] uppercase tracking-[0.2em] text-white transition-opacity hover:opacity-90 sm:text-xs">
+              Agregar
+            </button>
+          </div>
+
+          <div className="flex items-center justify-center gap-4 rounded-full border border-[color:var(--border)] bg-white/70 px-4 py-3">
+            <button
+              onClick={decreaseQuantity}
+              className="text-lg leading-none transition-opacity hover:opacity-60"
+            >
+              −
+            </button>
+
+            <span className="min-w-[24px] text-center text-sm font-medium">
+              {quantity}
+            </span>
+
+            <button
+              onClick={increaseQuantity}
+              className="text-lg leading-none transition-opacity hover:opacity-60"
+            >
+              +
+            </button>
+          </div>
         </div>
       </div>
     </article>

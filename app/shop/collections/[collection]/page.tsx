@@ -64,9 +64,7 @@ export default function Collection({ params,}: { params: Promise<{ collection: s
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
-              title={product.title}
-              price={product.price}
-              image={product.image}
+              product={product}
               onInfoClick={() => setSelectedProduct(product)}
             />
           ))}

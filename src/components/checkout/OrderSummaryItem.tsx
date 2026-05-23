@@ -1,26 +1,50 @@
 import CartItem from "@/src/types/cart";
+import { useCartStore } from "@/src/store/cartStore";
 
 type OrderSummaryItemProps = {
   item: CartItem;
-  onRemove: (id: number) => void;
-  onIncreaseQuantity: (id: number) => void;
-  onDecreaseQuantity: (id: number) => void;
+  // onRemove: (id: number) => void;
+  // onIncreaseQuantity: (id: number) => void;
+  // onDecreaseQuantity: (id: number) => void;
 };
 
-export default function OrderSummaryItem({
-  item,
-  onRemove,
-  onIncreaseQuantity,
-  onDecreaseQuantity,
-}: OrderSummaryItemProps) {
+export default function OrderSummaryItem({ item }: OrderSummaryItemProps) {
+  const clearCart = useCartStore(
+    (state) => state.clearCart
+  );
+
+  const increaseQuantity = useCartStore(
+    (state) => state.addItem
+  );
+
+  const decreaseQuantity = useCartStore(
+    (state) => state.decreaseQuantity
+  )
+
+  const removeItem = useCartStore(
+    (state) => state.removeItem
+  );
+
   const handleDecreaseQuantity = () => {
-    if (item.quantity === 1) {
-      onRemove(item.id);
-      return;
+      if (item.quantity === 1) {
+        removeItem(item.id);
+        return;
     }
 
-    onDecreaseQuantity(item.id);
+    decreaseQuantity(item.id);
   };
+
+  const handleIncreaseQuantity = () => {
+    increaseQuantity(item)
+  }
+
+  const onRemove = (id: number) => {
+    removeItem(id)
+  }
+
+  const handleClearCart = () =>{
+    clearCart()
+  }
 
   return (
     <article className="flex items-center gap-4 rounded-3xl bg-neutral-50 p-4 ring-1 ring-black/5 transition-all duration-300 hover:bg-neutral-100/70 hover:shadow-sm">
@@ -53,7 +77,7 @@ export default function OrderSummaryItem({
             </span>
 
             <button
-              onClick={() => onIncreaseQuantity(item.id)}
+              onClick={handleIncreaseQuantity}
               className="flex h-8 w-8 items-center justify-center rounded-full text-base font-medium text-neutral-600 transition-all duration-200 hover:scale-105 hover:bg-neutral-100 hover:text-black active:scale-95"
             >
               +

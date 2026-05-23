@@ -30,11 +30,13 @@ export function Navbar({ showShopLink = true }: NavbarProps) {
           <Link href="/#contacto">Contacto</Link>
         </nav>
 
-        <div 
-          className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40"
-        >
-          <CartIcon />
-        </div>
+        <Link href="/checkout">
+          <div 
+            className="rounded-full border border-[color:var(--border)] bg-white/80 p-3 backdrop-blur-sm transition-colors hover:bg-[var(--blush)]/40"
+          >
+            <CartIcon />
+          </div>
+        </Link>
 
         {/* <Link
           href="/shop"

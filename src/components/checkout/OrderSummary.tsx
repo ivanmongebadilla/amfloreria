@@ -38,7 +38,6 @@ export default function OrderSummary({ items, onRemove,}: OrderSummaryProps) {
           <OrderSummaryItem
             key={item.id}
             item={item}
-            onRemove={onRemove}
           />
         ))}
       </div>

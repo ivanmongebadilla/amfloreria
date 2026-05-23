@@ -49,7 +49,7 @@ export function ProductModal({
 
     setTimeout(() => {
       setIsAdding(false);
-    }, 1200);
+    }, 1000);
   };
 
   if (!isOpen || !product) return null;
@@ -147,11 +147,11 @@ export function ProductModal({
               onClick={handleAddToCart}
               className={`w-full rounded-full px-6 py-4 text-xs uppercase tracking-[0.25em] text-white transition-all duration-300 active:scale-[0.98] ${
                 isAdding
-                  ? "scale-[1.01] bg-emerald-600 shadow-xl shadow-emerald-500/20"
+                  ? "bg-neutral-800 shadow-xl shadow-black/10"
                   : "bg-[var(--foreground)] hover:scale-[1.01] hover:opacity-90"
               }`}
             >
-              {isAdding ? "Agregado al carrito ✓" : "Agregar al carrito"}
+              {isAdding ? "Agregado al carrito" : "Agregar al carrito"}
             </button>
           </div>
         </div>

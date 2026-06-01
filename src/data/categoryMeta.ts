@@ -1,16 +1,16 @@
 export const categoryMeta = {
-  ramos: {
-    title: "Ramos",
+  "ramos-express": {
+    title: "Ramos Express",
     subtitle:
-      "Bouquets diseñados cuidadosamente para momentos especiales.",
+      "Ramos elegantes preparados para entrega inmediata.",
     heroImage:
       "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
   },
 
-  "arreglos-florales": {
-    title: "Arreglos Florales",
+  "bouquets-premium": {
+    title: "Bouquets Premium",
     subtitle:
-      "Diseños florales sofisticados para regalar o decorar.",
+      "Diseños exclusivos elaborados con flores selectas.",
     heroImage:
       "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1200&auto=format&fit=crop",
   },
@@ -20,14 +20,22 @@ export const categoryMeta = {
     subtitle:
       "Diseños elegantes para acompañar momentos importantes.",
     heroImage:
-      "https://images.unsplash.com/photo-1455656678494-4d1b5f3e7ad1?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1758334587571-d3dd723c9f46?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXJyZWdsbyUyMGNvbmRvbGVuY2lhc3xlbnwwfHwwfHx8MA%3D%3D",
   },
 
-  eventos: {
-    title: "Eventos",
+  "bouquet-personalizado": {
+    title: "Bouquet Personalizado",
     subtitle:
-      "Arreglos florales premium para celebraciones y eventos.",
+      "Personaliza cada detalle para una experiencia floral exclusiva.",
     heroImage:
-      "https://images.unsplash.com/photo-1519378058457-4c29a0a2efac?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Ym91cXVldHN8ZW58MHx8MHx8fDA%3D",
+  },
+
+  "flowerbox": {
+    title: "Flowerbox Floral",
+    subtitle:
+      "Diseños florales exclusivos presentados en una elegante flowerbox.",
+    heroImage:
+      "https://plus.unsplash.com/premium_photo-1677004108338-82a832e806ac?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zmxvd2VyYm94fGVufDB8fDB8fHww",
   },
 };

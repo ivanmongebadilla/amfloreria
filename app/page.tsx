@@ -3,6 +3,8 @@ import { Navbar } from "@/src/components/shared/Navbar";
 import { Footer } from "@/src/components/shared/Footer";
 import { CollectionCard } from "@/src/components/ui/CollectionCard";
 import { collections } from "../src/data/collections"
+import { CategoryCard } from "@/src/components/ui/CategoryCard";
+import { categories } from "@/src/data/categories";
 
 export default function Home() {
   return (
@@ -78,15 +80,14 @@ export default function Home() {
                 Diseños florales para cada estilo.
               </h2>
             </div>
-
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
-              {collections.map((collection) => (
-                <CollectionCard
-                  key={collection.title}
-                  title={collection.title}
-                  description={collection.description}
-                  image={collection.image}
-                  href={collection.href}
+              {categories.map((category) => (
+                <CategoryCard
+                  key={category.title}
+                  title={category.title}
+                  description={category.description}
+                  image={category.image}
+                  href={category.href}
                 />
               ))}
             </div>

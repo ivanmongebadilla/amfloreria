@@ -1,5 +1,5 @@
 export const categoryMeta = {
-  "ramos-express": {
+  "ramo-express": {
     title: "Ramos Express",
     subtitle:
       "Ramos elegantes preparados para entrega inmediata.",
@@ -7,7 +7,7 @@ export const categoryMeta = {
       "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1200&auto=format&fit=crop",
   },
 
-  "bouquets-premium": {
+  "bouquet-premium": {
     title: "Bouquets Premium",
     subtitle:
       "Diseños exclusivos elaborados con flores selectas.",

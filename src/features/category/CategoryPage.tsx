@@ -7,7 +7,7 @@ import { Footer } from "@/src/components/shared/Footer";
 import { ProductCard } from "@/src/components/ui/ProductCard";
 import { ProductModal } from "@/src/components/ui/ProductModal";
 import { categoryMeta } from "@/src/data/categoryMeta";
-import Product from "@/src/types/products";
+import Product from "@/src/types/Products";
 
 interface CategoryPageProps {
     products: Product[];

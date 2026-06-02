@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useCartStore } from "@/src/store/cartStore";
-import Product from "@/src/types/products";
+import Product from "@/src/types/Products";
 
 interface ProductCardProps {
   product: Product;

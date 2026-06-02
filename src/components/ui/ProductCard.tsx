@@ -41,8 +41,13 @@ export function ProductCard({ product, onInfoClick }: ProductCardProps) {
 
   return (
     <article className="overflow-hidden rounded-[1.5rem] border border-white/50 bg-white/40 shadow-lg shadow-black/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10">
-      <div
+      {/* <div
         className="h-[250px] bg-cover bg-center transition-transform duration-700 hover:scale-[1.02] sm:h-[340px]"
+        style={{ backgroundImage: `url(${product.image})` }}
+      /> */}
+
+      <div
+        className="h-[250px] mt-2 bg-contain bg-center bg-no-repeat transition-transform duration-700 hover:scale-[1.02] sm:h-[340px]"
         style={{ backgroundImage: `url(${product.image})` }}
       />
 

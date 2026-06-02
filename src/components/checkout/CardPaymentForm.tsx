@@ -9,12 +9,13 @@ export default function CardPaymentForm() {
   const [cvv, setCvv] = useState("");
 
   return (
-    <div className="mx-auto w-full max-w-md rounded-lg border border-neutral-200 bg-white p-6 shadow-sm">
-      <h2 className="mb-6 text-xl font-semibold">Payment Details</h2>
+    // <div className="mx-auto w-full max-w-md rounded-lg border border-neutral-200 bg-white p-6 shadow-sm">
+    <div className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+      <h2 className="mb-6 text-xl font-semibold">Detalles de Pago</h2>
 
       <div className="space-y-4">
         <div>
-          <label className="mb-2 block text-sm font-medium">Cardholder Name</label>
+          <label className="mb-2 block text-sm font-medium">Nombre Completo</label>
           <input
             type="text"
             value={cardholderName}
@@ -25,7 +26,7 @@ export default function CardPaymentForm() {
         </div>
 
         <div>
-          <label className="mb-2 block text-sm font-medium">Card Number</label>
+          <label className="mb-2 block text-sm font-medium">Numero de Tarjeta</label>
           <input
             type="text"
             value={cardNumber}
@@ -37,7 +38,7 @@ export default function CardPaymentForm() {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="mb-2 block text-sm font-medium">Expiration</label>
+            <label className="mb-2 block text-sm font-medium">Expiracion</label>
             <input
               type="text"
               value={expirationDate}

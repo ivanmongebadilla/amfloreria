@@ -8,6 +8,7 @@ import OrderSummary from "@/src/components/checkout/OrderSummary";
 import { useCartStore } from "@/src/store/cartStore";
 import Link from "next/link";
 import { Footer } from "@/src/components/shared/Footer";
+import CardPaymentForm from "@/src/components/checkout/CardPaymentForm";
 
 export default function CheckoutPage() {
     const items = useCartStore((state) => state.items);
@@ -67,6 +68,7 @@ export default function CheckoutPage() {
                 </section>
 
                 <OrderSummary items={items} onRemove={removeItem}/>
+                <CardPaymentForm />
 
             </div>
             <Footer/>

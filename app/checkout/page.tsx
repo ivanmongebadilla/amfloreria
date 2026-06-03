@@ -8,7 +8,6 @@ import OrderSummary from "@/src/components/checkout/OrderSummary";
 import { useCartStore } from "@/src/store/cartStore";
 import Link from "next/link";
 import { Footer } from "@/src/components/shared/Footer";
-import CardPaymentForm from "@/src/components/checkout/CardPaymentForm";
 
 export default function CheckoutPage() {
     const items = useCartStore((state) => state.items);
@@ -22,6 +21,35 @@ export default function CheckoutPage() {
         cardMessage: ""
     })
 
+    const isFormValid = 
+        formData.fullName.trim() !== "" &&
+        formData.phone.trim() !== "" &&
+        formData.address.trim() !== "" &&
+        formData.cardMessage.trim() !== "";
+
+    const canCheckout = items.length > 0 && isFormValid;
+
+    async function handleCheckout() {
+        const response = await fetch(
+            "/api/checkout",
+            {
+            method: "POST",
+
+            headers: {
+                "Content-Type":
+                "application/json",
+            },
+
+            body: JSON.stringify({
+                items,
+            }),
+            }
+        );
+
+        const data = await response.json();
+
+        window.location.href = data.url;
+    }
 
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 text-[var(--foreground)] sm:px-6 md:px-12 lg:px-20">
@@ -57,7 +85,7 @@ export default function CheckoutPage() {
                     <DeliverySchedule/>
                 </section>
 
-                <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
+                {/* <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
                     <h2 className="text-lg font-medium">Mensaje de Tarjeta</h2>
 
                     <textarea
@@ -65,10 +93,15 @@ export default function CheckoutPage() {
                         rows={5}
                         className="mt-5 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"
                     />
-                </section>
+                </section> */}
 
                 <OrderSummary items={items} onRemove={removeItem}/>
-                <CardPaymentForm />
+                <button className="w-full rounded-md bg-black px-4 py-3 text-white transition disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:text-neutral-500" 
+                    onClick={handleCheckout} 
+                    disabled={!canCheckout}
+                >
+                    Continuar
+                </button>
 
             </div>
             <Footer/>

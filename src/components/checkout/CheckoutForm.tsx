@@ -63,6 +63,15 @@ export function CheckoutForm ({ formData, setFormData,}: CheckoutFormProps) {
                 onChange={handleChange}
                 className="rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"
                 />
+
+                <textarea
+                placeholder="Mensaje de tarjeta"
+                rows={4}
+                name="deliveryInstructions"
+                value={formData.cardMessage}
+                onChange={handleChange}
+                className="rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"
+                />
             </div>
         </div>
     )

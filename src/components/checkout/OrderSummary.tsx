@@ -12,7 +12,7 @@ export default function OrderSummary({ items, onRemove,}: OrderSummaryProps) {
     0
   );
 
-  const deliveryFee = items.length > 0 ? 150 : 0;
+  const deliveryFee = items.length > 0 ? 60 : 0;
   const total = subtotal + deliveryFee;
 
   return (

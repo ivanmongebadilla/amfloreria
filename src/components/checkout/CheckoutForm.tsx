@@ -31,7 +31,7 @@ export function CheckoutForm ({ formData, setFormData,}: CheckoutFormProps) {
                 <input
                 type="text"
                 name="fullName"
-                placeholder="Nombre completo"
+                placeholder="Nombre completo (requerido)"
                 value={formData.fullName}
                 onChange={handleChange}
                 className="h-12 rounded-2xl border border-neutral-200 bg-white px-4 text-sm outline-none transition focus:border-black"
@@ -39,7 +39,7 @@ export function CheckoutForm ({ formData, setFormData,}: CheckoutFormProps) {
 
                 <input
                 type="tel"
-                placeholder="Teléfono"
+                placeholder="Teléfono (requerido)"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
@@ -48,7 +48,7 @@ export function CheckoutForm ({ formData, setFormData,}: CheckoutFormProps) {
 
                 <input
                 type="text"
-                placeholder="Dirección de entrega"
+                placeholder="Dirección de entrega (requerido)"
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
@@ -65,9 +65,9 @@ export function CheckoutForm ({ formData, setFormData,}: CheckoutFormProps) {
                 />
 
                 <textarea
-                placeholder="Mensaje de tarjeta"
+                placeholder="Mensaje de tarjeta (requerido)"
                 rows={4}
-                name="deliveryInstructions"
+                name="cardMessage"
                 value={formData.cardMessage}
                 onChange={handleChange}
                 className="rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"

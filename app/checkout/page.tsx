@@ -85,16 +85,6 @@ export default function CheckoutPage() {
                     <DeliverySchedule/>
                 </section>
 
-                {/* <section className="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-                    <h2 className="text-lg font-medium">Mensaje de Tarjeta</h2>
-
-                    <textarea
-                        placeholder="Escribe un mensaje especial para la tarjeta"
-                        rows={5}
-                        className="mt-5 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm outline-none transition focus:border-black"
-                    />
-                </section> */}
-
                 <OrderSummary items={items} onRemove={removeItem}/>
                 <button className="w-full rounded-md bg-black px-4 py-3 text-white transition disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:text-neutral-500" 
                     onClick={handleCheckout} 

@@ -132,17 +132,6 @@ export function ProductModal({
               </div>
             </div>
 
-            <div className="space-y-3">
-              <label className="text-xs uppercase tracking-[0.3em] text-neutral-500">
-                Nota Personalizada
-              </label>
-
-              <textarea
-                placeholder="Escribe un mensaje especial..."
-                className="min-h-[120px] w-full rounded-[1.5rem] border border-[color:var(--border)] bg-white/70 p-4 outline-none transition-all duration-200 focus:border-black/20 focus:bg-white"
-              />
-            </div>
-
             <button
               onClick={handleAddToCart}
               className={`w-full rounded-full px-6 py-4 text-xs uppercase tracking-[0.25em] text-white transition-all duration-500 active:scale-[0.98] ${

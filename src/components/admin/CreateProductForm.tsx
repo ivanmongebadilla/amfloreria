@@ -6,18 +6,22 @@ interface CreateProductFormProps{
     category: string;
 }
 
+
+//TODO need to add an input for the flowers
 export default function CreateProductForm({category}: CreateProductFormProps){
     const router = useRouter();
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState<number>(0);
+    const [price, setPrice] = useState<number>();
     const [active, setActive] = useState<boolean>(true);
     const [imagePreview, setImagePreview] = useState("");
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [isSaving, setIsSaving] = useState(false)
     const [status, setStatus] = useState<"success" | "error" | null>(null);
     const [message, setMessage] = useState("");
+    const [flowerInput, setFlowerInput] = useState("");
+    const [flowers, setFlowers] = useState<string[]>([]);
 
     const getFormData = () => {
         const formData = new FormData();
@@ -32,10 +36,20 @@ export default function CreateProductForm({category}: CreateProductFormProps){
             description
         );
 
-        formData.append(
-            "price",
-            price.toString()
-        );
+        if (price){
+            formData.append(
+                "price",
+                price.toString()
+            );
+        }
+
+        if (flowers){
+            formData.append(
+                "flowers",
+                JSON.stringify(flowers)
+            )
+        }
+        
 
         formData.append(
             "active",
@@ -108,13 +122,33 @@ export default function CreateProductForm({category}: CreateProductFormProps){
         setImagePreview(previewUrl);
     }
 
+    function handleAddFlower() {
+        if (!flowerInput.trim()) return;
+
+        setFlowers((prev) => [
+            ...prev,
+            flowerInput.trim(),
+        ]);
+
+        setFlowerInput("");
+    }
+
+    function handleRemoveFlower(flowerToRemove: string) {
+        setFlowers((prev) =>
+            prev.filter(
+            (flower) =>
+                flower !== flowerToRemove
+            )
+        );
+    }
+
     return(
         <form
         onSubmit={handleSubmit}
         className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-black/5"
         >
         <h2 className="text-2xl font-light">
-            Editar Producto
+            Agregar Producto
         </h2>
 
         <div className="mt-6 space-y-5">
@@ -129,6 +163,7 @@ export default function CreateProductForm({category}: CreateProductFormProps){
                 onChange={(e) =>
                 setTitle(e.target.value)
                 }
+                required
                 className="h-12 w-full rounded-2xl border border-neutral-200 px-4 text-sm outline-none transition focus:border-black"
             />
             </div>
@@ -146,8 +181,55 @@ export default function CreateProductForm({category}: CreateProductFormProps){
                     e.target.value
                 )
                 }
+                required
                 className="w-full rounded-2xl border border-neutral-200 px-4 py-3 text-sm outline-none transition focus:border-black"
             />
+            </div>
+
+            <div>
+                <label className="mb-2 block text-sm">
+                    Contenido Floral
+                </label>
+
+                <div className="flex gap-2">
+                    <input
+                    type="text"
+                    value={flowerInput}
+                    onChange={(e) =>
+                        setFlowerInput(e.target.value)
+                    }
+                    placeholder="Ej. Rosas"
+                    className="h-12 flex-1 rounded-2xl border border-neutral-200 px-4"
+                    />
+
+                    <button
+                    type="button"
+                    onClick={handleAddFlower}
+                    className="rounded-2xl bg-black px-4 text-white"
+                    >
+                    Agregar
+                    </button>
+                </div>
+
+                <div className="mt-4 flex flex-wrap gap-2">
+                    {flowers.map((flower) => (
+                    <div
+                        key={flower}
+                        className="flex items-center gap-2 rounded-full bg-[var(--blush)] px-3 py-2 text-sm"
+                    >
+                        {flower}
+
+                        <button
+                        type="button"
+                        onClick={() =>
+                            handleRemoveFlower(flower)
+                        }
+                        >
+                        ✕
+                        </button>
+                    </div>
+                    ))}
+                </div>
             </div>
 
             <div>
@@ -163,6 +245,7 @@ export default function CreateProductForm({category}: CreateProductFormProps){
                     Number(e.target.value)
                 )
                 }
+                required
                 className="h-12 w-full rounded-2xl border border-neutral-200 px-4 text-sm outline-none transition focus:border-black"
             />
             </div>
@@ -173,6 +256,7 @@ export default function CreateProductForm({category}: CreateProductFormProps){
                 </label>
 
                 <input
+                    required
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
@@ -186,6 +270,19 @@ export default function CreateProductForm({category}: CreateProductFormProps){
                 >
                     Seleccionar Imagen
                 </label>
+            </div>
+
+            <div>
+                <label className="mb-2 block text-sm">
+                    Vista previa
+                </label>
+
+                <div
+                    className="h-[250px] rounded-2xl bg-contain bg-center bg-no-repeat ring-1 ring-black/5"
+                    style={{
+                    backgroundImage: `url(${imagePreview})`,
+                    }}
+                />
             </div>
 
             <div className="flex items-center gap-3">

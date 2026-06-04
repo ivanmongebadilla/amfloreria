@@ -27,6 +27,14 @@ export default async function CreateProduct({params}: CreateProductProps){
                             A|M Florería
                         </p>
 
+                        <h1 className="mt-2 text-4xl font-light tracking-tight">
+                            {category}
+                        </h1>
+
+                        <p className="mt-2 text-sm text-neutral-500">
+                            Agrega un producto a esta categoría.
+                        </p>
+
                     </div>
                 </div>
                 <CreateProductForm category={category} />

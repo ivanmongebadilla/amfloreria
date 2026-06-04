@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import Product from "../types/Products";
+import CreateProductInput from "../types/CreateProductInput";
 import { generateSlug } from "../utils/generateSlug";
 
 export async function getAllProducts(){
@@ -62,12 +63,11 @@ export async function updateProductById(product: Product) {
 }
 
 
-export async function uploadProductImage(file: File, category: string) {
+export async function uploadProductImage(file: File, fileName: string, category: string) {
     const extension =
         file.name.split(".").pop();
 
-    const fileName =
-        `${crypto.randomUUID()}.${extension}`;
+    fileName = `${fileName}.${extension}`;
 
     const { error } =
         await supabase.storage
@@ -84,4 +84,22 @@ export async function uploadProductImage(file: File, category: string) {
         .getPublicUrl(`${category}/${fileName}`);
 
     return data.publicUrl;
+}
+
+export async function createNewProduct(product: CreateProductInput){
+    const { data, error } = await supabase
+        .from("products")
+        .insert(product)
+        .select()
+        .single()
+
+    if (error) {
+        throw error;
+    }
+
+    return {success: true, data: data}
+}
+
+export async function deleteProductById(product: Product) {
+    
 }

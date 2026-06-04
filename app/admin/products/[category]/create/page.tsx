@@ -1,15 +1,17 @@
-import Product from "@/src/types/Products"
 import Link from "next/link";
-import EditProductForm from "@/src/components/admin/EditProductForm";
+import CreateProductForm from "@/src/components/admin/CreateProductForm";
 
-interface EditProductPageProps {
-    product: Product;
-    category: string
+interface CreateProductProps {
+  params: Promise<{
+    category: string;
+  }>;
 }
 
-export default function EditProductPage({product, category}: EditProductPageProps) {
+export default async function CreateProduct({params}: CreateProductProps){
+    const { category } = await params
+
     return(
-         <main className="min-h-screen bg-[var(--background)] px-4 py-6 sm:px-6 md:px-12 lg:px-20">
+        <main className="min-h-screen bg-[var(--background)] px-4 py-6 sm:px-6 md:px-12 lg:px-20">
             <div className="mx-auto max-w-7xl">
 
                 <div className="mb-8 flex items-center justify-between">
@@ -27,8 +29,9 @@ export default function EditProductPage({product, category}: EditProductPageProp
 
                     </div>
                 </div>
-                <EditProductForm product={product}/>
+                <CreateProductForm category={category} />
             </div>
         </main>
     )
+    
 }

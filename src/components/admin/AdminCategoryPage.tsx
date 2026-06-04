@@ -35,9 +35,12 @@ export default function AdminCategoryPage({products, category}: CategoryPageProp
                 </p>
             </div>
 
-            <button className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90">
-                Agregar Producto
-            </button>
+            <Link href={`/admin/products/${category}/create`}>
+                <button className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90">
+                    Agregar Producto
+                </button>
+            </Link>
+    
             </div>
 
             <div className="overflow-x-auto rounded-3xl bg-white shadow-sm ring-1 ring-black/5">

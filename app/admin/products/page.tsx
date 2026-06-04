@@ -27,10 +27,6 @@ export default function ProductsPage() {
               Administra el catálogo de productos.
             </p>
           </div>
-
-          {/* <button className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90">
-            Agregar Producto
-          </button> */}
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">

@@ -60,3 +60,28 @@ export async function updateProductById(product: Product) {
 
     return {success: true, data: data}
 }
+
+
+export async function uploadProductImage(file: File, category: string) {
+    const extension =
+        file.name.split(".").pop();
+
+    const fileName =
+        `${crypto.randomUUID()}.${extension}`;
+
+    const { error } =
+        await supabase.storage
+        .from("images")
+        .upload(`${category}/${fileName}`, file);
+
+    if (error) {
+        throw error;
+    }
+
+    const { data } =
+        supabase.storage
+        .from("images")
+        .getPublicUrl(`${category}/${fileName}`);
+
+    return data.publicUrl;
+}

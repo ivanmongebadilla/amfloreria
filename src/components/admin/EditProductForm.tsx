@@ -47,7 +47,7 @@ export default function EditProductForm({product,}: EditProductFormProps) {
         );
 
         if (!response.ok) {
-        throw new Error();
+            throw new Error();
         }
 
         setStatus("success");
@@ -69,18 +69,6 @@ export default function EditProductForm({product,}: EditProductFormProps) {
         setIsSaving(false);
     }
   }
-
-//   async function handleSubmit( e: React.FormEvent<HTMLFormElement>) {
-//     e.preventDefault();
-
-//     console.log({
-//       title,
-//       description,
-//       price,
-//       active,
-//       imagePreview,
-//     });
-//   }
 
   function handleImageChange(
     e: React.ChangeEvent<HTMLInputElement>

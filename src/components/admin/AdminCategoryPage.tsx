@@ -1,5 +1,5 @@
 import Product from "@/src/types/Products";
-import ProductTableBody from "@/src/features/category/ProductTableBody";
+import AdminProductCard from "@/src/features/category/AdminProductCard";
 import Link from "next/link";
 
 interface CategoryPageProps {
@@ -41,7 +41,7 @@ export default function AdminCategoryPage({products, category}: CategoryPageProp
             </div>
 
             <div className="overflow-x-auto rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
-                <ProductTableBody products={products} />
+                <AdminProductCard products={products} />
             </div>
 
         </div>

@@ -7,47 +7,44 @@ interface EditProductFormProps {
   product: Product;
 }
 
-export default function EditProductForm({
-  product,
-}: EditProductFormProps) {
-  const [title, setTitle] = useState(
-    product.title
-  );
+//TODO need to add an input for editing the flowers array
 
-  const [description, setDescription] =
-    useState(product.description);
+export default function EditProductForm({product,}: EditProductFormProps) {
 
-  const [price, setPrice] = useState(
-    product.price
-  );
+  const [title, setTitle] = useState(product.title);
+  const [description, setDescription] = useState(product.description);
+  const [price, setPrice] = useState(product.price);
+  const [active, setActive] = useState(product.active);
+  const [imagePreview, setImagePreview] = useState(product.image);
+  const [imageFile, setImageFile] = useState<File | null>(null);
 
-  const [active, setActive] = useState(
-    product.active
-  );
-
-  const [imagePreview, setImagePreview] =
-  useState(product.image);
-
-  const [imageFile, setImageFile] =
-    useState<File | null>(null);
-
-//   const [image, setImage] = useState(
-//     product.image
-//   );
-
-  async function handleSubmit(
-    e: React.FormEvent<HTMLFormElement>
-  ) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
     e.preventDefault();
-
-    console.log({
-      title,
-      description,
-      price,
-      active,
-      imagePreview,
-    });
+    await fetch(`/api/products/${product.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            title,
+            description,
+            price,
+            active
+        })
+    })
   }
+
+//   async function handleSubmit( e: React.FormEvent<HTMLFormElement>) {
+//     e.preventDefault();
+
+//     console.log({
+//       title,
+//       description,
+//       price,
+//       active,
+//       imagePreview,
+//     });
+//   }
 
   function handleImageChange(
     e: React.ChangeEvent<HTMLInputElement>
@@ -142,18 +139,6 @@ export default function EditProductForm({
             >
                 Seleccionar Imagen
             </label>
-          {/* <label className="mb-2 block text-sm">
-            URL Imagen
-          </label>
-
-          <input
-            type="text"
-            value={image}
-            onChange={(e) =>
-              setImage(e.target.value)
-            }
-            className="h-12 w-full rounded-2xl border border-neutral-200 px-4 text-sm outline-none transition focus:border-black"
-          /> */}
         </div>
 
         <div>

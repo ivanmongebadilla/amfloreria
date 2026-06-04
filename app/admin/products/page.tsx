@@ -2,26 +2,6 @@ import Link from "next/link";
 import { categories } from "@/src/data/categories";
 
 export default function ProductsPage() {
-  const products = [
-    {
-      id: 1,
-      title: "Ramo Primavera",
-      category: "ramo-express",
-      price: 899,
-    },
-    {
-      id: 2,
-      title: "Bouquet Premium",
-      category: "bouquet-premium",
-      price: 1499,
-    },
-    {
-      id: 3,
-      title: "Flower Box Rosa",
-      category: "flowerbox",
-      price: 1199,
-    },
-  ];
 
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 sm:px-6 md:px-12 lg:px-20">
@@ -48,9 +28,9 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <button className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90">
+          {/* <button className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90">
             Agregar Producto
-          </button>
+          </button> */}
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">

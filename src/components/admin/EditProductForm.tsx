@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Product from "@/src/types/Products";
+import { useRouter } from "next/navigation";
 
 interface EditProductFormProps {
   product: Product;
@@ -11,27 +12,62 @@ interface EditProductFormProps {
 
 export default function EditProductForm({product,}: EditProductFormProps) {
 
+    const router = useRouter()
+
   const [title, setTitle] = useState(product.title);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
   const [active, setActive] = useState(product.active);
   const [imagePreview, setImagePreview] = useState(product.image);
   const [imageFile, setImageFile] = useState<File | null>(null);
+  const [isSaving, setIsSaving] = useState(false)
+  const [status, setStatus] = useState<"success" | "error" | null>(null);
+  const [message, setMessage] = useState("");
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>){
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    await fetch(`/api/products/${product.id}`, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+    try {
+        setIsSaving(true);
+
+        const response = await fetch(
+        `/api/products/${product.id}`,
+        {
+            method: "PUT",
+            headers: {
+            "Content-Type":
+                "application/json",
+            },
+            body: JSON.stringify({
             title,
             description,
             price,
-            active
-        })
-    })
+            active,
+            }),
+        }
+        );
+
+        if (!response.ok) {
+        throw new Error();
+        }
+
+        setStatus("success");
+        setMessage(
+        "Producto actualizado correctamente"
+        );
+
+        setTimeout(() => {
+            router.push(
+                `/admin/products/${product.category}`
+            );
+        }, 1000);
+    } catch {
+        setStatus("error");
+        setMessage(
+        "Error al actualizar producto"
+        );
+    } finally {
+        setIsSaving(false);
+    }
   }
 
 //   async function handleSubmit( e: React.FormEvent<HTMLFormElement>) {
@@ -174,11 +210,28 @@ export default function EditProductForm({product,}: EditProductFormProps) {
           </label>
         </div>
 
+        {message && (
+            <div
+                className={`mt-6 rounded-3xl p-4 text-center ring-1 ${
+                status === "success"
+                    ? "bg-green-50 text-green-700 ring-green-200"
+                    : "bg-red-50 text-red-700 ring-red-200"
+                }`}
+            >
+                <p className="text-base font-medium">
+                {status === "success" ? "✓" : "✕"} {message}
+                </p>
+            </div>
+        )}
+
         <button
           type="submit"
-          className="w-full rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90"
+          disabled={isSaving}
+          className="w-full rounded-full bg-black px-6 py-3 text-sm text-white transition hover:opacity-90 disabled:opacity-50"
         >
-          Guardar Cambios
+          {isSaving
+            ? "Guardando..."
+            : "Guardar Cambios"}
         </button>
       </div>
     </form>

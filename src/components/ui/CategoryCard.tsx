@@ -15,7 +15,7 @@ export function CategoryCard({
 }: CategoryCardProps) {
   return (
     <Link
-      href={href}
+      href={`shop/${href}`}
       className="group relative overflow-hidden rounded-[1.75rem] border border-white/50 bg-white/40 shadow-xl shadow-black/5 backdrop-blur-sm"
     >
       <div

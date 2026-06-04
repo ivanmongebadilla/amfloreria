@@ -60,7 +60,7 @@ export default function Collection({ params,}: { params: Promise<{ collection: s
           </div>
         </section>
 
-        <section className="grid grid-cols-1 gap-4 min-[450px]:grid-cols-2 lg:gap-6">
+        {/* <section className="grid grid-cols-1 gap-4 min-[450px]:grid-cols-2 lg:gap-6">
           {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
@@ -68,7 +68,7 @@ export default function Collection({ params,}: { params: Promise<{ collection: s
               onInfoClick={() => setSelectedProduct(product)}
             />
           ))}
-        </section>
+        </section> */}
 
         <Footer />
       </div>

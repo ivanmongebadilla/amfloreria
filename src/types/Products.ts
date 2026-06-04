@@ -9,4 +9,5 @@ export default interface Product {
   description: string;
   price: number;
   featured: boolean;
+  active: boolean;
 }

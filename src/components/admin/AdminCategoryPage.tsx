@@ -27,7 +27,7 @@ export default function AdminCategoryPage({products, category}: CategoryPageProp
                 </p>
 
                 <h1 className="mt-2 text-4xl font-light tracking-tight">
-                {category}
+                    {category}
                 </h1>
 
                 <p className="mt-2 text-sm text-neutral-500">
@@ -41,7 +41,7 @@ export default function AdminCategoryPage({products, category}: CategoryPageProp
             </div>
 
             <div className="overflow-x-auto rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
-                <AdminProductCard products={products} />
+                <AdminProductCard products={products} category={category}/>
             </div>
 
         </div>

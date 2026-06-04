@@ -1,10 +1,12 @@
 import Product from "@/src/types/Products";
+import Link from "next/link";
 
 interface AdminProductCardProps {
     products: Product[];
+    category: string;
 }
 
-export default function AdminProductCard({products}: AdminProductCardProps) {
+export default function AdminProductCard({products, category}: AdminProductCardProps) {
     return (
         <div className="grid p-4 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
@@ -43,9 +45,12 @@ export default function AdminProductCard({products}: AdminProductCardProps) {
                 </p>
 
                 <div className="mt-6 flex gap-2">
-                <button className="flex-1 rounded-full border border-neutral-200 px-4 py-2 text-sm transition hover:bg-neutral-50">
-                    Editar
-                </button>
+                <Link href={`/admin/products/${category}/${product.id}/edit`}>
+                    <button className="flex-1 rounded-full border border-neutral-200 px-4 py-2 text-sm transition hover:bg-neutral-50">
+                        Editar
+                    </button>
+                </Link>
+                
 
                 <button className="flex-1 rounded-full border border-red-200 px-4 py-2 text-sm text-red-600 transition hover:bg-red-50">
                     Eliminar

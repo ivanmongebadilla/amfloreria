@@ -31,17 +31,17 @@ export default function DashboardPage() {
             href="/admin/products"
           />
 
-          <AdminCard
+          {/* <AdminCard
             title="Ventas"
             description="Consultar métricas y ventas."
             href="/admin/sales"
-          />
+          /> */}
 
-          <AdminCard
+          {/* <AdminCard
             title="Configuración"
             description="Administrar información de la tienda."
             href="/admin/settings"
-          />
+          /> */}
         </section>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-3">

@@ -8,8 +8,6 @@ interface EditProductFormProps {
   product: Product;
 }
 
-//TODO need to add an input for editing the flowers array
-
 export default function EditProductForm({product,}: EditProductFormProps) {
 
     const router = useRouter()
@@ -19,6 +17,8 @@ export default function EditProductForm({product,}: EditProductFormProps) {
   const [price, setPrice] = useState(product.price);
   const [active, setActive] = useState(product.active);
   const [imagePreview, setImagePreview] = useState(product.image);
+  const [flowerInput, setFlowerInput] = useState("");
+  const [flowers, setFlowers] = useState<string[]>(product.flowers);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [isSaving, setIsSaving] = useState(false)
   const [status, setStatus] = useState<"success" | "error" | null>(null);
@@ -83,7 +83,27 @@ export default function EditProductForm({product,}: EditProductFormProps) {
             URL.createObjectURL(file);
 
         setImagePreview(previewUrl);
-    }
+  }
+
+  function handleAddFlower() {
+      if (!flowerInput.trim()) return;
+
+      setFlowers((prev) => [
+          ...prev,
+          flowerInput.trim(),
+      ]);
+
+      setFlowerInput("");
+  }
+
+  function handleRemoveFlower(flowerToRemove: string) {
+      setFlowers((prev) =>
+          prev.filter(
+          (flower) =>
+              flower !== flowerToRemove
+          )
+      );
+  }
 
   return (
     <form
@@ -125,6 +145,52 @@ export default function EditProductForm({product,}: EditProductFormProps) {
             }
             className="w-full rounded-2xl border border-neutral-200 px-4 py-3 text-sm outline-none transition focus:border-black"
           />
+        </div>
+
+        <div>
+            <label className="mb-2 block text-sm">
+                Contenido Floral
+            </label>
+
+            <div className="flex gap-2">
+                <input
+                type="text"
+                value={flowerInput}
+                onChange={(e) =>
+                    setFlowerInput(e.target.value)
+                }
+                placeholder="Ej. Rosas"
+                className="h-12 flex-1 rounded-2xl border border-neutral-200 px-4"
+                />
+
+                <button
+                type="button"
+                onClick={handleAddFlower}
+                className="rounded-2xl bg-black px-4 text-white"
+                >
+                Agregar
+                </button>
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-2">
+                {flowers.map((flower) => (
+                <div
+                    key={flower}
+                    className="flex items-center gap-2 rounded-full bg-[var(--blush)] px-3 py-2 text-sm"
+                >
+                    {flower}
+
+                    <button
+                    type="button"
+                    onClick={() =>
+                        handleRemoveFlower(flower)
+                    }
+                    >
+                    ✕
+                    </button>
+                </div>
+                ))}
+            </div>
         </div>
 
         <div>

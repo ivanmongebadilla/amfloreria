@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { uploadProductImage } from "@/src/lib/products";
 
-export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }){
+export async function POST(request: Request){
     const formData = await request.formData();
 
     const title = formData.get('title') as string

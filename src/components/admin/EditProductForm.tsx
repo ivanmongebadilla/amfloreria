@@ -7,15 +7,6 @@ interface EditProductFormProps {
   product: Product;
 }
 
-// export default function EditProductForm({product}: EditProductFormProps){
-//     console.log(product)
-//     return(
-//         <div>
-//             {product.title}
-//         </div>
-//     )
-// }
-
 export default function EditProductForm({
   product,
 }: EditProductFormProps) {
@@ -34,9 +25,15 @@ export default function EditProductForm({
     product.active
   );
 
-  const [image, setImage] = useState(
-    product.image
-  );
+  const [imagePreview, setImagePreview] =
+  useState(product.image);
+
+  const [imageFile, setImageFile] =
+    useState<File | null>(null);
+
+//   const [image, setImage] = useState(
+//     product.image
+//   );
 
   async function handleSubmit(
     e: React.FormEvent<HTMLFormElement>
@@ -48,9 +45,24 @@ export default function EditProductForm({
       description,
       price,
       active,
-      image,
+      imagePreview,
     });
   }
+
+  function handleImageChange(
+    e: React.ChangeEvent<HTMLInputElement>
+    ) {
+        const file = e.target.files?.[0];
+
+        if (!file) return;
+
+        setImageFile(file);
+
+        const previewUrl =
+            URL.createObjectURL(file);
+
+        setImagePreview(previewUrl);
+    }
 
   return (
     <form
@@ -112,7 +124,25 @@ export default function EditProductForm({
         </div>
 
         <div>
-          <label className="mb-2 block text-sm">
+            <label className="mb-2 block text-sm">
+                Imagen del Producto
+            </label>
+
+            <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+                id="product-image"
+            />
+
+            <label
+                htmlFor="product-image"
+                className="inline-flex cursor-pointer rounded-full border border-neutral-200 px-5 py-3 text-sm transition hover:bg-neutral-50"
+            >
+                Seleccionar Imagen
+            </label>
+          {/* <label className="mb-2 block text-sm">
             URL Imagen
           </label>
 
@@ -123,7 +153,7 @@ export default function EditProductForm({
               setImage(e.target.value)
             }
             className="h-12 w-full rounded-2xl border border-neutral-200 px-4 text-sm outline-none transition focus:border-black"
-          />
+          /> */}
         </div>
 
         <div>
@@ -134,7 +164,7 @@ export default function EditProductForm({
           <div
             className="h-[250px] rounded-2xl bg-contain bg-center bg-no-repeat ring-1 ring-black/5"
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${imagePreview})`,
             }}
           />
         </div>

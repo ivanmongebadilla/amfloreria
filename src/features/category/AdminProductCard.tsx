@@ -1,5 +1,9 @@
+"use client"
 import Product from "@/src/types/Products";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 interface AdminProductCardProps {
     products: Product[];
@@ -7,7 +11,44 @@ interface AdminProductCardProps {
 }
 
 export default function AdminProductCard({products, category}: AdminProductCardProps) {
+
+    const router = useRouter();
+    const [isDeleting, setIsDeleting] = useState(false)
+    const [deleting, setDeleting] = useState(false)
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+    async function handleDelete(selectedProduct: Product){
+        setDeleting(true)
+        try {
+            await fetch(
+                `/api/products/${selectedProduct.id}`,
+                {
+                method: "DELETE",
+                }
+            );
+
+            handleCloseModal();
+
+            router.refresh();
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setDeleting(false)
+        }
+    }
+
+    function handleDeleteClick(product: Product){
+        setSelectedProduct(product);
+        setIsDeleting(true);
+    }
+
+    function handleCloseModal(){
+        setIsDeleting(false);
+        setSelectedProduct(null);
+    }
+
     return (
+        <>
         <div className="grid p-4 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
             <div
@@ -52,7 +93,11 @@ export default function AdminProductCard({products, category}: AdminProductCardP
                 </Link>
                 
 
-                <button className="flex-1 rounded-full border border-red-200 px-4 py-2 text-sm text-red-600 transition hover:bg-red-50">
+                <button 
+                    onClick={() =>
+                        handleDeleteClick(product)
+                    }
+                    className="flex-1 rounded-full border border-red-200 px-4 py-2 text-sm text-red-600 transition hover:bg-red-50">
                     Eliminar
                 </button>
                 </div>
@@ -60,5 +105,68 @@ export default function AdminProductCard({products, category}: AdminProductCardP
             </div>
         ))}
         </div>
+
+            {isDeleting && selectedProduct && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-xl">
+                <h2 className="text-xl font-medium">
+                    Eliminar Producto
+                </h2>
+
+                <p className="mt-4 text-sm text-neutral-600">
+                    ¿Estás seguro de eliminar{" "}
+                    <span className="font-medium">
+                    {selectedProduct.title}
+                    </span>
+                    ?
+                </p>
+
+                <p className="mt-2 text-sm text-red-600">
+                    Esta acción no se puede deshacer.
+                </p>
+
+                <div className="mt-6">
+                    {deleting ? (
+                        <div className="rounded-full bg-neutral-100 px-4 py-3 text-center text-sm font-medium text-neutral-600">
+                        Eliminando...
+                        </div>
+                    ) : (
+                        <div className="flex gap-3">
+                        <button
+                            onClick={handleCloseModal}
+                            className="flex-1 rounded-full border border-neutral-200 px-4 py-3 text-sm transition hover:bg-neutral-50"
+                        >
+                            Cancelar
+                        </button>
+
+                        <button
+                            onClick={() => handleDelete(selectedProduct)}
+                            className="flex-1 rounded-full bg-red-600 px-4 py-3 text-sm text-white transition hover:bg-red-700"
+                        >
+                            Eliminar
+                        </button>
+                        </div>
+                    )}
+                </div>
+
+                {/* <div className="mt-6 flex gap-3">
+                    <button
+                    onClick={handleCloseModal}
+                    className="flex-1 rounded-full border border-neutral-200 px-4 py-3 text-sm transition hover:bg-neutral-50"
+                    >
+                    Cancelar
+                    </button>
+
+                    <button
+                        onClick={() => handleDelete(selectedProduct)}
+                    className="flex-1 rounded-full bg-red-600 px-4 py-3 text-sm text-white transition hover:bg-red-700"
+                    >
+                        Eliminar
+                    </button>
+                </div> */}
+                </div>
+            </div>
+)}
+        </>
     );
 }

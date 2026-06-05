@@ -100,6 +100,15 @@ export async function createNewProduct(product: CreateProductInput){
     return {success: true, data: data}
 }
 
-export async function deleteProductById(product: Product) {
-    
+export async function deleteProductById(id: string) {
+    const { error } = await supabase
+        .from('products')
+        .delete()
+        .eq('id', id)
+
+    if (error) {
+        throw error;
+    }
+
+    return {success: true}
 }

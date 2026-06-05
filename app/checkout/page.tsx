@@ -46,6 +46,18 @@ export default function CheckoutPage() {
 
             body: JSON.stringify({
                 items,
+                customerName: formData.fullName,
+                customerPhone: formData.phone,
+                customerAddress: formData.address,
+
+                deliveryDate,
+                deliveryTime,
+
+                deliveryInstructions:
+                    formData.deliveryInstructions,
+
+                cardMessage:
+                    formData.cardMessage,
             }),
             }
         );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { mockOrders } from "@/src/data/orderitemstest";
-import { OrderCard } from "@/src/components/admin/OrderCard";
+import { OrderSection } from "@/src/components/admin/OrderSection";
+import { OrdersStats } from "@/src/components/admin/OrderStats";
 
 export default function Orders() {
 
@@ -31,53 +32,12 @@ export default function Orders() {
           Administra y da seguimiento a los pedidos.
         </p>
 
-        <div className="mt-8 rounded-3xl bg-white p-5 shadow-sm ring-1 ring-black/5">
-          <h2 className="text-lg font-medium">
-            Estado de Pedidos
-          </h2>
-
-          <div className="mt-5 grid grid-cols-2 gap-4">
-            <div>
-              <p className="text-sm text-neutral-500">
-                Pendientes
-              </p>
-
-              <p className="mt-1 text-2xl font-light">
-                {pendingOrders.length}
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm text-neutral-500">
-                Preparando
-              </p>
-
-              <p className="mt-1 text-2xl font-light">
-                5
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm text-neutral-500">
-                En Camino
-              </p>
-
-              <p className="mt-1 text-2xl font-light">
-                3
-              </p>
-            </div>
-
-            <div>
-              <p className="text-sm text-neutral-500">
-                Entregadas
-              </p>
-
-              <p className="mt-1 text-2xl font-light">
-                47
-              </p>
-            </div>
-          </div>
-        </div>
+        <OrdersStats
+            pending={pendingOrders.length}
+            preparing={preparingOrders.length}
+            outForDelivery={outForDelivery.length}
+            delivered={delivered.length}
+        />
 
         <div className="mt-8">
           <input
@@ -87,76 +47,26 @@ export default function Orders() {
         </div>
 
         <div className="mt-8 space-y-6">
-          <details
-            open
-            className="rounded-3xl bg-white shadow-sm ring-1 ring-black/5"
-          >
-            <summary className="cursor-pointer list-none px-6 py-5">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-medium">
-                  Pendientes
-                </h2>
+           <OrderSection
+                status="Pendientes"
+                orders={pendingOrders}
+                open
+            />
 
-                <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs text-yellow-700">
-                  {pendingOrders.length}
-                </span>
-              </div>
-            </summary>
+            <OrderSection
+                status="Preparando"
+                orders={preparingOrders}
+            />
 
-            <div className="space-y-4 px-6 pb-6">
-              {pendingOrders.map((order) => (<OrderCard key={order.id} order={order}/> ))}
-            </div>
-          </details>
+            <OrderSection
+                status="En Camino"
+                orders={outForDelivery}
+            />
 
-          <details className="rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
-            <summary className="cursor-pointer list-none px-6 py-5">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-medium">
-                  Preparando
-                </h2>
-
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-xs text-blue-700">
-                  {preparingOrders.length}
-                </span>
-              </div>
-            </summary>
-
-            <div className="space-y-4 px-6 pb-6">
-              {preparingOrders.map((order) => (<OrderCard key={order.id} order={order}/> ))}
-            </div>
-          </details>
-
-          <details className="rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
-            <summary className="cursor-pointer list-none px-6 py-5">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-medium">
-                  En Camino
-                </h2>
-
-                <span className="rounded-full bg-purple-100 px-3 py-1 text-xs text-purple-700">
-                  {outForDelivery.length}
-                </span>
-              </div>
-            </summary>
-
-            <div className="space-y-4 px-6 pb-6">
-              {outForDelivery.map((order) => (<OrderCard key={order.id} order={order}/> ))}
-            </div>
-          </details>
-
-          <details className="rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
-            <summary className="cursor-pointer list-none px-6 py-5">
-              <div className="flex items-center justify-between">
-                <h2 className="text-lg font-medium">
-                  Entregadas
-                </h2>
-
-                <span className="rounded-full bg-green-100 px-3 py-1 text-xs text-green-700">
-                  {delivered.length}
-                </span>
-              </div>
-            </summary>
-          </details>
+            <OrderSection
+                status="Entregadas"
+                orders={delivered}
+            /> 
         </div>
       </div>
     </main>

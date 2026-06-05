@@ -20,12 +20,16 @@ export default function CheckoutPage() {
         deliveryInstructions: "",
         cardMessage: ""
     })
+    const [deliveryDate, setDeliveryDate] = useState("");
+    const [deliveryTime, setDeliveryTime] = useState("");
 
-    const isFormValid = 
+    const isFormValid =
         formData.fullName.trim() !== "" &&
         formData.phone.trim() !== "" &&
         formData.address.trim() !== "" &&
-        formData.cardMessage.trim() !== "";
+        formData.cardMessage.trim() !== "" &&
+        deliveryDate !== "" &&
+        deliveryTime !== "";
 
     const canCheckout = items.length > 0 && isFormValid;
 
@@ -82,7 +86,11 @@ export default function CheckoutPage() {
                 </section>
 
                 <section id="deliveryschedule">
-                    <DeliverySchedule/>
+                    <DeliverySchedule 
+                        deliveryDate={deliveryDate}
+                        deliveryTime={deliveryTime}
+                        setDeliveryDate={setDeliveryDate}
+                        setDeliveryTime={setDeliveryTime}/>
                 </section>
 
                 <OrderSummary items={items} onRemove={removeItem}/>

@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 import { createCheckoutDraft, updateCheckoutDraft } from "@/src/actions/checkout/checkoutDraft";
 
 export async function POST(request: Request) {
+
+    const origin = request.headers.get("origin")
     try{
         const {
             items,
@@ -72,10 +74,10 @@ export async function POST(request: Request) {
         ),
 
         success_url:
-            "http://localhost:3000/checkout/success",
+            `${origin}/checkout/success`,
 
         cancel_url:
-            "http://localhost:3000/checkout/cancel",
+            `${origin}/checkout/cancel`,
         });
 
         await updateCheckoutDraft(draft.data.id, session.id)

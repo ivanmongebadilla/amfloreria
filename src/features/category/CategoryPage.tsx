@@ -64,7 +64,7 @@ export default function CategoryPage({ products, category}: CategoryPageProps) {
 
         <section className="grid grid-cols-1 gap-4 min-[450px]:grid-cols-2 lg:gap-6">
           {products.map((product) => (
-            <ProductCard
+            product.active && <ProductCard
               key={product.id}
               product={product}
               onInfoClick={() => setSelectedProduct(product)}

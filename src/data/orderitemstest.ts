@@ -38,7 +38,7 @@ export const mockOrders: OrderWithItems[] = [
         // created_at:
         //     "2026-06-05T18:00:00Z",
 
-        items: [
+        order_items: [
             {
                 id: "item_001",
 
@@ -116,7 +116,7 @@ export const mockOrders: OrderWithItems[] = [
         // created_at:
         //     "2026-06-05T19:15:00Z",
 
-        items: [
+        order_items: [
             {
                 id: "item_003",
 
@@ -176,7 +176,7 @@ export const mockOrders: OrderWithItems[] = [
         // created_at:
         //     "2026-06-05T20:00:00Z",
 
-        items: [
+        order_items: [
             {
                 id: "item_004",
 

@@ -5,6 +5,8 @@ interface OrderCardProps{
 }
 
 export function OrderCard({order}: OrderCardProps){
+
+    console.log(order);
     return (
         <div
             key={order.id}
@@ -33,11 +35,11 @@ export function OrderCard({order}: OrderCardProps){
             <div className="mt-5">
             <p className="text-sm font-medium">
                 Productos -{" "}
-                {order.items.length}
+                {order.order_items.length}
             </p>
 
             <ul className="mt-2 space-y-1 text-sm text-neutral-600">
-                {order.items.map(
+                {order.order_items.map(
                 (item) => (
                     <li key={item.id}>
                     • {item.product_title}

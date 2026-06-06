@@ -36,12 +36,12 @@ export default function OrderPage({orders}: OrderPageProps){
           Administra y da seguimiento a los pedidos.
         </p>
 
-        <OrdersStats
+        {/* <OrdersStats
             pending={pendingOrders.length}
             preparing={preparingOrders.length}
             outForDelivery={outForDelivery.length}
             delivered={delivered.length}
-        />
+        /> */}
 
         <div className="mt-8">
           <input
@@ -54,18 +54,17 @@ export default function OrderPage({orders}: OrderPageProps){
            <OrderSection
                 status="Pendientes"
                 orders={pendingOrders}
-                open
             />
 
-            <OrderSection
+            {/* <OrderSection
                 status="Preparando"
                 orders={preparingOrders}
-            />
+            /> */}
 
-            <OrderSection
+            {/* <OrderSection
                 status="En Camino"
                 orders={outForDelivery}
-            />
+            /> */}
 
             <OrderSection
                 status="Entregadas"

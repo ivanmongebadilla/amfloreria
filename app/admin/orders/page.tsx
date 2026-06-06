@@ -8,7 +8,6 @@ import OrderPage from "@/src/features/orders/OrderPage";
 export default async function Orders() {
 
     const orders = await getAllOrders()
-    console.log(orders)
 
     return(
         <OrderPage orders={orders}/>

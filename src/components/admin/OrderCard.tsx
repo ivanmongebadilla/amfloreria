@@ -10,7 +10,7 @@ export function OrderCard({order}: OrderCardProps){
     return (
         <div
             key={order.id}
-            className="rounded-2xl border border-neutral-100 p-5"
+            className="rounded-2xl border-3 border-neutral-300 bg-white p-5"
         >
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
             <div>
@@ -23,12 +23,20 @@ export function OrderCard({order}: OrderCardProps){
                 </h3>
 
                 <p className="text-sm text-neutral-500">
-                {order.customer_phone}
+                Telefono: {order.customer_phone}
                 </p>
             </div>
 
-            <span className="h-fit rounded-full bg-yellow-100 px-3 py-1 text-xs text-yellow-700">
-                Pendiente
+            <span
+                className={`h-fit rounded-full px-3 py-1 text-xs ${
+                    order.order_status === "delivered"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-yellow-100 text-yellow-700"
+                }`}
+            >
+                {order.order_status === "delivered"
+                    ? "Entregada"
+                    : "Pendiente"}
             </span>
             </div>
 
@@ -75,11 +83,26 @@ export function OrderCard({order}: OrderCardProps){
             </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-6 flex gap-3">
+                <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
+                    Ver Orden
+                </button>
+
+                {order.order_status === "pending" && (
+                    <button
+                        className="rounded-full bg-green-600 px-5 py-2 text-sm text-white transition hover:bg-green-700"
+                    >
+                        Marcar como Entregada
+                    </button>
+                )}
+            </div>
+
+            {/* <div className="mt-6">
             <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
                 Ver Orden
             </button>
-            </div>
+            
+            </div> */}
         </div>
     )
 }

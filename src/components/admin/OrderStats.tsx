@@ -25,15 +25,15 @@ export function OrdersStats({
                     value={pending}
                 />
 
-                <OrderStatCard
+                {/* <OrderStatCard
                     label="Preparando"
                     value={preparing}
-                />
+                /> */}
 
-                <OrderStatCard
+                {/* <OrderStatCard
                     label="En Camino"
                     value={outForDelivery}
-                />
+                /> */}
 
                 <OrderStatCard
                     label="Entregadas"

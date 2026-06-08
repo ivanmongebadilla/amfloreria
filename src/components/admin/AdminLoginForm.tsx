@@ -37,6 +37,7 @@ async function handleSubmit(
           alert(
               "Usuario o contraseña incorrectos"
           );
+          setLoading(false)
       }
   }
 

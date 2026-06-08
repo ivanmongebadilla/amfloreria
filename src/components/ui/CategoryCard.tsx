@@ -1,9 +1,10 @@
 import Link from "next/link";
+import { StaticImageData } from "next/image";
 
 interface CategoryCardProps {
   title: string;
   description: string;
-  image: string;
+  image: string | StaticImageData;
   href: string;
 }
 

@@ -11,6 +11,15 @@ export function OrderCard({order}: OrderCardProps){
     const router = useRouter()
 
     async function handleDelivery() {
+        const confirmed =
+            window.confirm(
+                "¿Marcar este pedido como entregado?"
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
         const delivery = await updateOrderStatus(order.id, "delivered")
         router.refresh()
     }

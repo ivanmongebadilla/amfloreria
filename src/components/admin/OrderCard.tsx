@@ -108,35 +108,46 @@ export function OrderCard({order}: OrderCardProps){
             </div>
 
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-            <div>
-                <p className="text-xs uppercase tracking-[0.15em] text-neutral-400">
-                Entrega
-                </p>
+                <div>
+                    <p className="text-xs uppercase tracking-[0.15em] text-neutral-400">
+                        Mensaje de Tarjeta
+                    </p>
 
-                <p className="mt-1 text-sm">
-                    {order.delivery_date}
-                </p>
+                    <p className="mt-1 text-sm">
+                        {order.card_message}
+                    </p>
 
-                <p className="text-sm text-neutral-500">
-                    Hora de Entrega: {order.delivery_time}
-                </p>
-                <p className="text-sm text-neutral-500">
-                    {order.customer_address}
-                </p>
-                <p className="text-sm text-neutral-500">
-                    {order.delivery_instructions}
-                </p>
-            </div>
+                </div>
 
-            <div>
-                <p className="text-xs uppercase tracking-[0.15em] text-neutral-400">
-                Total
-                </p>
+                <div>
+                    <p className="text-xs uppercase tracking-[0.15em] text-neutral-400">
+                    Entrega
+                    </p>
 
-                <p className="mt-1 text-lg font-medium">
-                ${order.total}
-                </p>
-            </div>
+                    <p className="mt-1 text-sm">
+                        {order.delivery_date}
+                    </p>
+
+                    <p className="text-sm text-neutral-500">
+                        Hora de Entrega: {order.delivery_time}
+                    </p>
+                    <p className="text-sm text-neutral-500">
+                        {order.customer_address}
+                    </p>
+                    <p className="text-sm text-neutral-500">
+                        {order.delivery_instructions}
+                    </p>
+                </div>
+
+                <div>
+                    <p className="text-xs uppercase tracking-[0.15em] text-neutral-400">
+                    Total
+                    </p>
+
+                    <p className="mt-1 text-lg font-medium">
+                    ${order.total}
+                    </p>
+                </div>
             </div>
 
             <div className="mt-6 flex justify-center gap-3">

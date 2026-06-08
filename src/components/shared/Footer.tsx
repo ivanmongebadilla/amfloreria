@@ -12,21 +12,27 @@ export function Footer() {
 
       <div className="flex items-center gap-5">
         <a
-          href="#"
+          href="https://www.facebook.com/people/Am-Boutique-floral/100039831827677/?ref=NONE_xav_ig_profile_page_web#"
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
         >
           <Facebook size={18} />
         </a>
 
         <a
-          href="#"
+          href="https://www.instagram.com/am_boutique_floral_caborca/"
           className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <Instagram size={18} />
         </a>
 
         <a
-          href="#"
+          href="https://wa.me/526379352828"
+          target="_blank"
+          rel="noopener noreferrer"
           className="rounded-full border border-[color:var(--border)] p-3 transition-colors hover:bg-[var(--blush)]/40"
         >
           <MessageCircle size={18} />

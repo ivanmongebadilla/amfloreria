@@ -17,8 +17,6 @@ interface CategoryPageProps {
 export default function CategoryPage({ products, category}: CategoryPageProps) {
   const meta = categoryMeta[category as keyof typeof categoryMeta];
 
-  console.log(products)
-
   const [selectedProduct, setSelectedProduct] = useState<(typeof products)[0] | null>(null);
 
   return (

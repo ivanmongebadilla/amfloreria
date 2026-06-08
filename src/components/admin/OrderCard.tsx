@@ -1,15 +1,22 @@
+"use client"
 import { OrderWithItems } from "@/src/types/OrderWithItems"
+import { updateOrderStatus } from "@/src/actions/orders/updateOrderStatus";
+import { useRouter } from "next/navigation";
 
 interface OrderCardProps{
     order: OrderWithItems;
 }
 
 export function OrderCard({order}: OrderCardProps){
+    const router = useRouter()
 
-    console.log(order);
+    async function handleDelivery() {
+        const delivery = await updateOrderStatus(order.id, "delivered")
+        router.refresh()
+    }
+
     return (
         <div
-            key={order.id}
             className="rounded-2xl border-3 border-neutral-300 bg-white p-5"
         >
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
@@ -28,7 +35,7 @@ export function OrderCard({order}: OrderCardProps){
             </div>
 
             <span
-                className={`h-fit rounded-full px-3 py-1 text-xs ${
+                className={`h-fit rounded-full px-3 py-1 text-m text-center ${
                     order.order_status === "delivered"
                         ? "bg-green-100 text-green-700"
                         : "bg-yellow-100 text-yellow-700"
@@ -50,7 +57,7 @@ export function OrderCard({order}: OrderCardProps){
                 {order.order_items.map(
                 (item) => (
                     <li key={item.id}>
-                    • {item.product_title}
+                    • {item.product_title} - ({item.quantity})
                     </li>
                 )
                 )}
@@ -64,11 +71,17 @@ export function OrderCard({order}: OrderCardProps){
                 </p>
 
                 <p className="mt-1 text-sm">
-                {order.delivery_date}
+                    {order.delivery_date}
                 </p>
 
                 <p className="text-sm text-neutral-500">
-                {order.delivery_time}
+                    Hora de Entrega: {order.delivery_time}
+                </p>
+                <p className="text-sm text-neutral-500">
+                    {order.customer_address}
+                </p>
+                <p className="text-sm text-neutral-500">
+                    {order.delivery_instructions}
                 </p>
             </div>
 
@@ -83,26 +96,20 @@ export function OrderCard({order}: OrderCardProps){
             </div>
             </div>
 
-            <div className="mt-6 flex gap-3">
-                <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
+            <div className="mt-6 flex justify-center gap-3">
+                {/* <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
                     Ver Orden
-                </button>
+                </button> */}
 
                 {order.order_status === "pending" && (
                     <button
+                        onClick={handleDelivery}
                         className="rounded-full bg-green-600 px-5 py-2 text-sm text-white transition hover:bg-green-700"
                     >
                         Marcar como Entregada
                     </button>
                 )}
             </div>
-
-            {/* <div className="mt-6">
-            <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
-                Ver Orden
-            </button>
-            
-            </div> */}
         </div>
     )
 }

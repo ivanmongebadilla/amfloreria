@@ -43,12 +43,12 @@ export default function OrderPage({orders}: OrderPageProps){
             delivered={delivered.length}
         /> */}
 
-        <div className="mt-8">
+        {/* <div className="mt-8">
           <input
             placeholder="Buscar orden o cliente..."
             className="h-12 w-full rounded-2xl border border-neutral-200 bg-white px-4 text-sm outline-none transition focus:border-black"
           />
-        </div>
+        </div> */}
 
         <div className="mt-8 space-y-6">
            <OrderSection

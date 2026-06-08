@@ -39,7 +39,7 @@ export default function CancelPage() {
         </p>
 
         <div className="mt-8">
-          <Link href="/checkout">
+          <Link href="/shop">
             <button className="w-full rounded-md bg-black px-4 py-3 text-white">
               Intentar nuevamente
             </button>

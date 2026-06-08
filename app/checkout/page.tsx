@@ -22,6 +22,7 @@ export default function CheckoutPage() {
     })
     const [deliveryDate, setDeliveryDate] = useState("");
     const [deliveryTime, setDeliveryTime] = useState("");
+    const [ loading, setLoading] = useState(false)
 
     const isFormValid =
         formData.fullName.trim() !== "" &&
@@ -34,37 +35,43 @@ export default function CheckoutPage() {
     const canCheckout = items.length > 0 && isFormValid;
 
     async function handleCheckout() {
-        const response = await fetch(
-            "/api/checkout",
-            {
-            method: "POST",
+        try {
+            setLoading(true)
+            const response = await fetch(
+                "/api/checkout",
+                {
+                method: "POST",
 
-            headers: {
-                "Content-Type":
-                "application/json",
-            },
+                headers: {
+                    "Content-Type":
+                    "application/json",
+                },
 
-            body: JSON.stringify({
-                items,
-                customerName: formData.fullName,
-                customerPhone: formData.phone,
-                customerAddress: formData.address,
+                body: JSON.stringify({
+                    items,
+                    customerName: formData.fullName,
+                    customerPhone: formData.phone,
+                    customerAddress: formData.address,
 
-                deliveryDate,
-                deliveryTime,
+                    deliveryDate,
+                    deliveryTime,
 
-                deliveryInstructions:
-                    formData.deliveryInstructions,
+                    deliveryInstructions:
+                        formData.deliveryInstructions,
 
-                cardMessage:
-                    formData.cardMessage,
-            }),
-            }
-        );
+                    cardMessage:
+                        formData.cardMessage,
+                }),
+                }
+            );
 
-        const data = await response.json();
+            const data = await response.json();
 
-        window.location.href = data.url;
+            window.location.href = data.url;
+        }catch(error){
+            setLoading(false);
+        }
+        
     }
 
   return (
@@ -108,9 +115,11 @@ export default function CheckoutPage() {
                 <OrderSummary items={items} onRemove={removeItem}/>
                 <button className="w-full rounded-md bg-black px-4 py-3 text-white transition disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:text-neutral-500" 
                     onClick={handleCheckout} 
-                    disabled={!canCheckout}
+                    disabled={!canCheckout || loading}
                 >
-                    Continuar
+                    {loading
+                        ? "⟳ Procesando..."
+                        : "Continuar"}
                 </button>
 
             </div>

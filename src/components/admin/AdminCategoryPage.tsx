@@ -43,7 +43,10 @@ export default function AdminCategoryPage({products, category}: CategoryPageProp
     
             </div>
 
-            <div className="overflow-x-auto rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
+            {/* <div className="overflow-x-auto rounded-3xl bg-white shadow-sm ring-1 ring-black/5">
+                <AdminProductCard products={products} category={category}/>
+            </div> */}
+            <div>
                 <AdminProductCard products={products} category={category}/>
             </div>
 

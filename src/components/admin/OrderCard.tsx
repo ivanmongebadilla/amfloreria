@@ -10,6 +10,24 @@ interface OrderCardProps{
 export function OrderCard({order}: OrderCardProps){
     const router = useRouter()
 
+    async function handleReady() {
+        const confirmed =
+            window.confirm(
+                "¿Marcar este pedido como listo para entregar?"
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
+        await updateOrderStatus(
+            order.id,
+            "ready"
+        );
+
+        router.refresh();
+    }
+
     async function handleDelivery() {
         const confirmed =
             window.confirm(
@@ -47,13 +65,29 @@ export function OrderCard({order}: OrderCardProps){
                 className={`h-fit rounded-full px-3 py-1 text-m text-center ${
                     order.order_status === "delivered"
                         ? "bg-green-100 text-green-700"
+                        : order.order_status === "ready"
+                        ? "bg-blue-100 text-blue-700"
+                        : "bg-yellow-100 text-yellow-700"
+                }`}
+            >
+                {order.order_status === "delivered"
+                    ? "Entregada"
+                    : order.order_status === "ready"
+                    ? "Listo"
+                    : "Pendiente"}
+            </span>
+
+            {/* <span
+                className={`h-fit rounded-full px-3 py-1 text-m text-center ${
+                    order.order_status === "delivered"
+                        ? "bg-green-100 text-green-700"
                         : "bg-yellow-100 text-yellow-700"
                 }`}
             >
                 {order.order_status === "delivered"
                     ? "Entregada"
                     : "Pendiente"}
-            </span>
+            </span> */}
             </div>
 
             <div className="mt-5">
@@ -106,11 +140,17 @@ export function OrderCard({order}: OrderCardProps){
             </div>
 
             <div className="mt-6 flex justify-center gap-3">
-                {/* <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
-                    Ver Orden
-                </button> */}
 
                 {order.order_status === "pending" && (
+                    <button
+                        onClick={handleReady}
+                        className="rounded-full bg-blue-600 px-5 py-2 text-sm text-white transition hover:bg-blue-700"
+                    >
+                        Marcar como Listo
+                    </button>
+                )}
+
+                {order.order_status === "ready" && (
                     <button
                         onClick={handleDelivery}
                         className="rounded-full bg-green-600 px-5 py-2 text-sm text-white transition hover:bg-green-700"
@@ -118,7 +158,23 @@ export function OrderCard({order}: OrderCardProps){
                         Marcar como Entregada
                     </button>
                 )}
+
             </div>
+
+            {/* <div className="mt-6 flex justify-center gap-3"> */}
+                {/* <button className="rounded-full border border-neutral-200 px-5 py-2 text-sm transition hover:bg-neutral-50">
+                    Ver Orden
+                </button> */}
+
+                {/* {order.order_status === "pending" && (
+                    <button
+                        onClick={handleDelivery}
+                        className="rounded-full bg-green-600 px-5 py-2 text-sm text-white transition hover:bg-green-700"
+                    >
+                        Marcar como Entregada
+                    </button>
+                )}
+            </div> */}
         </div>
     )
 }

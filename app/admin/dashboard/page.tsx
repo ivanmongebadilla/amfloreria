@@ -1,6 +1,8 @@
 import AdminCard from "@/src/components/admin/AdminCard";
 import { DashboardStats } from "@/src/components/admin/DashbordStats";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardPage() {
   return (
     <main className="min-h-screen bg-[var(--background)] px-4 py-6 sm:px-6 md:px-12 lg:px-20">

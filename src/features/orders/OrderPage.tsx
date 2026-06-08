@@ -10,8 +10,9 @@ interface OrderPageProps{
 
 export default function OrderPage({orders}: OrderPageProps){
     const pendingOrders = orders.filter((order) => order.order_status === "pending");
-    const preparingOrders = orders.filter((order) => order.order_status === "preparing");
-    const outForDelivery = orders.filter((order) => order.order_status === "out_for_delivery")
+    // const preparingOrders = orders.filter((order) => order.order_status === "preparing");
+    // const outForDelivery = orders.filter((order) => order.order_status === "out_for_delivery")
+    const readyOrders = orders.filter((order) => order.order_status === "ready")
     const delivered = orders.filter((order) => order.order_status === "delivered")
 
   return (
@@ -56,10 +57,10 @@ export default function OrderPage({orders}: OrderPageProps){
                 orders={pendingOrders}
             />
 
-            {/* <OrderSection
-                status="Preparando"
-                orders={preparingOrders}
-            /> */}
+            <OrderSection
+                status="Listos"
+                orders={readyOrders}
+            />
 
             {/* <OrderSection
                 status="En Camino"

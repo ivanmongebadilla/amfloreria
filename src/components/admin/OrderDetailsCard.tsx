@@ -13,7 +13,7 @@ function getStatusBadgeClasses(
         case "Preparando":
             return "bg-blue-100 text-blue-700";
 
-        case "En Camino":
+        case "Listos":
             return "bg-purple-100 text-purple-700";
 
         case "Entregadas":

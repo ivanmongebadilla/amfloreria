@@ -2,52 +2,44 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { createClient } from "@/src/lib/supabase/client";
 
 export default function AdminLoginForm() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [ loading, setLoading] = useState(false)
 
   const router = useRouter();
+  const supabase = createClient();
 
-  async function handleSubmit(
-    e: React.FormEvent<HTMLFormElement>
-    ) {
-        e.preventDefault();
+async function handleSubmit(
+      e: React.FormEvent
+  ) {
+      e.preventDefault();
+       try {
+          setLoading(true);
 
-        try {
-            const response = await fetch(
-            "/api/admin-login",
-            {
-                method: "POST",
-                headers: {
-                "Content-Type":
-                    "application/json",
-                },
-                body: JSON.stringify({
-                username,
-                password,
-                }),
-            }
-            );
+          const { error } =
+              await supabase.auth.signInWithPassword({
+                  email,
+                  password,
+              });
 
-            const data = await response.json();
+          if (error) {
+              throw error;
+          }
 
-            if (!response.ok) {
-            throw new Error(
-                data.message ??
-                "Error al iniciar sesión"
-            );
-            }
+          router.push("/admin/dashboard");
+          router.refresh();
+      } catch (error) {
+          console.error(error);
 
-            router.push("/admin/dashboard");
-        } catch (error) {
-            console.error(error);
-
-            alert(
-            "Usuario o contraseña incorrectos"
-            );
-        }
-    }
+          alert(
+              "Usuario o contraseña incorrectos"
+          );
+          setLoading(false)
+      }
+  }
 
   return (
     <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-sm ring-1 ring-black/5">
@@ -71,17 +63,17 @@ export default function AdminLoginForm() {
       >
         <div>
           <label className="mb-2 block text-sm">
-            Usuario
+            Email
           </label>
 
           <input
             type="text"
-            value={username}
+            value={email}
             onChange={(e) =>
-              setUsername(e.target.value)
+              setEmail(e.target.value)
             }
             className="h-12 w-full rounded-2xl border border-neutral-200 bg-white px-4 text-sm outline-none transition focus:border-black"
-            placeholder="Usuario"
+            placeholder="Email"
           />
         </div>
 
@@ -103,9 +95,10 @@ export default function AdminLoginForm() {
 
         <button
           type="submit"
-          className="mt-4 w-full rounded-full bg-black px-5 py-3 text-sm text-white transition hover:opacity-90"
+          disabled={loading}
+          className="mt-4 w-full rounded-full bg-black px-5 py-3 text-sm text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
-          Iniciar Sesión
+          {loading ? "Iniciando Sesion..." : "Iniciar Sesion" }
         </button>
       </form>
     </div>

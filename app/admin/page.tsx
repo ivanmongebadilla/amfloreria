@@ -1,9 +1,5 @@
-import AdminLoginForm from "@/src/components/admin/AdminLoginForm";
+import { redirect } from "next/navigation";
 
-export default function AdminPage() {
-  return (
-    <main className="flex min-h-screen items-center justify-center bg-[var(--background)] px-4">
-      <AdminLoginForm />
-    </main>
-  );
+export default function Admin() {
+    redirect("/admin/login");
 }

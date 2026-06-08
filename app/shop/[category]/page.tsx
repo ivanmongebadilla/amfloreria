@@ -8,7 +8,7 @@ export default async function Category({ params,}: { params: Promise<{ category:
 
   const filteredProducts = await getProductsByCategory(category);
 
-  console.log(filteredProducts)
+  // console.log(filteredProducts)
 
   return ( 
     <CategoryPage products={filteredProducts} category={category} />

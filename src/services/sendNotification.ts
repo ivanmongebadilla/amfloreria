@@ -1,7 +1,4 @@
-export async function sendNotification(
-  title: string,
-  message: string
-) {
+export async function sendNotification(title: string, message: string) {
   const response = await fetch(
     "https://api.onesignal.com/notifications",
     {

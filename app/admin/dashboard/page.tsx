@@ -1,6 +1,8 @@
 import AdminCard from "@/src/components/admin/AdminCard";
 import { DashboardStats } from "@/src/components/admin/DashbordStats";
 
+import EnableNotificationsButton from "@/src/components/admin/EnableNotificationsButton";
+
 export const dynamic = "force-dynamic";
 
 export default function DashboardPage() {
@@ -12,9 +14,13 @@ export default function DashboardPage() {
             A|M Florería
           </p>
 
-          <h1 className="mt-3 text-4xl font-light tracking-tight">
-            Dashboard
-          </h1>
+          <div className="mt-3 flex items-start justify-between gap-4">
+            <h1 className="text-4xl font-light tracking-tight">
+              Dashboard
+            </h1>
+
+            <EnableNotificationsButton />
+          </div>
 
           <p className="mt-2 text-sm text-neutral-500">
             Administra productos, pedidos y la información de la tienda.

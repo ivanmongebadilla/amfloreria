@@ -37,6 +37,8 @@ export async function POST(request: Request) {
             cart: items,
         });
 
+        console.log(`Draft from checkoput route: ${draft.data}`)
+
         const session = await stripe.checkout.sessions.create({
         mode: "payment",
 

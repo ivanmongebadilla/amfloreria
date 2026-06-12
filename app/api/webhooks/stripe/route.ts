@@ -2,6 +2,7 @@ import Stripe from "stripe";
 
 import { stripe } from "@/src/lib/stripe";
 import { createOrderFromDraft } from "@/src/actions/orders/createOrderFromDraft";
+import { sendNewOrderNotification } from "@/src/services/sendNewOrderNotification";
 
 export async function POST(request: Request) {
     const body = await request.text();
@@ -55,10 +56,23 @@ export async function POST(request: Request) {
                     );
                 }
 
-                const result =
+                console.log(`draft_id from route stripe: ${checkoutDraftId}`)
+
+                const order =
                     await createOrderFromDraft(
                         checkoutDraftId
                     );
+
+                console.log(`Order from route stripe: ${order}`)    
+
+                try {
+                    await sendNewOrderNotification(order)
+                } catch (error) {
+                    console.error(
+                        "Failed to send notification",
+                        error
+                    );
+                }
 
                 break;
             }

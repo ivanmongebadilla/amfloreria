@@ -7,13 +7,9 @@ export default function OneSignalInit() {
   useEffect(() => {
     async function init() {
       await OneSignal.init({
-        appId: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID!,
-        allowLocalhostAsSecureOrigin: true,
+        appId: "c3256b91-2302-4af4-8436-2a390f415b5c",
+        // allowLocalhostAsSecureOrigin: true,
       });
-
-      window.dispatchEvent(
-        new CustomEvent("onesignal-ready")
-      );
 
       console.log("OneSignal initialized");
     }

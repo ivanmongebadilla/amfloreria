@@ -2,34 +2,26 @@
 
 import { useEffect, useState } from "react";
 import OneSignal from "react-onesignal";
+import { initOneSignal } from "@/src/lib/onesignal";
 
 export default function EnableNotificationsButton() {
   const [loading, setLoading] = useState(true);
-  const [shouldShow, setShouldShow] = useState(false);
+  const [shouldShow, setShouldShow] = useState<boolean>(false);
+  const [optedIn, setOptedIn] = useState<boolean | undefined>(false);
 
   useEffect(() => {
-    const handleReady = () => {
-      const optedIn =
-        OneSignal.User.PushSubscription.optedIn;
+
+    async function checkSubscription(){
+      await initOneSignal();
+      const optedIn = OneSignal.User.PushSubscription.optedIn;
+      console.log(optedIn)
 
       setShouldShow(!optedIn);
-      setLoading(false);
+      setOptedIn(optedIn);
+    }
+    checkSubscription();
+  }, [])
 
-      console.log("OneSignal optedIn:", optedIn);
-    };
-
-    window.addEventListener(
-      "onesignal-ready",
-      handleReady
-    );
-
-    return () => {
-      window.removeEventListener(
-        "onesignal-ready",
-        handleReady
-      );
-    };
-  }, []);
 
   async function enableNotifications() {
     try {
@@ -46,21 +38,48 @@ export default function EnableNotificationsButton() {
         OneSignal.User.PushSubscription.optedIn;
 
       setShouldShow(!optedIn);
+      setOptedIn(optedIn);
     } catch (error) {
       console.error(error);
     }
   }
 
-  if (loading) return null;
+  async function disableNotifications() {
+    try {
+      await OneSignal.User.PushSubscription.optOut();
+      const optedIn =
+        OneSignal.User.PushSubscription.optedIn;
 
-  if (!shouldShow) return null;
+      setOptedIn(optedIn);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
 
   return (
-    <button
-      onClick={enableNotifications}
-      className="rounded-md bg-black px-4 py-3 text-white transition hover:opacity-90"
-    >
-      🔔 Activar Notificaciones
-    </button>
+    <>
+      {!optedIn ? (
+        <button
+          onClick={enableNotifications}
+          className="rounded-md bg-black px-4 py-3 text-white transition hover:opacity-90"
+        >
+          🔔 Activar Notificaciones
+        </button>
+      ) : (
+        <button
+          onClick={disableNotifications}
+          className="rounded-md bg-red-600 px-4 py-3 text-white transition hover:opacity-90"
+        >
+          🔕 Desactivar Notificaciones
+        </button>
+      )}
+      {/* {shouldShow && <button
+        onClick={enableNotifications}
+        className="rounded-md bg-black px-4 py-3 text-white transition hover:opacity-90"
+      >
+        🔔 Activar Notificaciones
+      </button>} */}
+    </> 
   );
 }

@@ -7,7 +7,7 @@ export default function AdminLayout({
 }) {
   return (
     <>
-      <OneSignalInit />
+      {/* <OneSignalInit /> */}
       {children}
     </>
   );

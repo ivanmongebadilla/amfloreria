@@ -8,7 +8,7 @@ export async function sendNotification(title: string, message: string) {
         Authorization: `Key ${process.env.ONESIGNAL_API_KEY}`,
       },
       body: JSON.stringify({
-        app_id: "c3256b91-2302-4af4-8436-2a390f415b5c",
+        app_id: process.env.NEXT_PUBLIC_ONESIGNAL_APP_ID!,
 
         included_segments: ["Total Subscriptions"],
 

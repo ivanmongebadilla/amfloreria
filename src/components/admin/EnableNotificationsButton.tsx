@@ -8,6 +8,8 @@ export default function EnableNotificationsButton() {
   const [loading, setLoading] = useState(true);
   const [shouldShow, setShouldShow] = useState<boolean>(false);
   const [optedIn, setOptedIn] = useState<boolean | undefined>(false);
+  const [errorModalOpen, setErrorModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
 
@@ -22,6 +24,10 @@ export default function EnableNotificationsButton() {
     checkSubscription();
   }, [])
 
+  function showError(message: string) {
+    setErrorMessage(message);
+    setErrorModalOpen(true);
+  }
 
   async function enableNotifications() {
     try {
@@ -32,6 +38,18 @@ export default function EnableNotificationsButton() {
         !OneSignal.User.PushSubscription.optedIn
       ) {
         await OneSignal.User.PushSubscription.optIn();
+
+        const subscriptionId =
+          OneSignal.User.PushSubscription.id;
+
+        console.log("Subscription ID:", subscriptionId);
+
+        if (!subscriptionId) {
+          showError(
+            "No se pudo registrar el dispositivo para recibir notificaciones."
+          );
+          return;
+        }
       }
 
       const optedIn =
@@ -41,6 +59,12 @@ export default function EnableNotificationsButton() {
       setOptedIn(optedIn);
     } catch (error) {
       console.error(error);
+
+      showError(
+        error instanceof Error
+          ? error.message
+          : "Ocurrió un error al activar las notificaciones."
+      );
     }
   }
 
@@ -80,6 +104,27 @@ export default function EnableNotificationsButton() {
       >
         🔔 Activar Notificaciones
       </button>} */}
+
+      {errorModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="w-full max-w-md rounded-lg bg-white p-6">
+            <h2 className="mb-3 text-lg font-semibold">
+              Error al activar notificaciones
+            </h2>
+
+            <p className="mb-4 text-sm text-gray-600">
+              {errorMessage}
+            </p>
+
+            <button
+              onClick={() => setErrorModalOpen(false)}
+              className="rounded-md bg-black px-4 py-2 text-white"
+            >
+              Entendido
+            </button>
+          </div>
+        </div>
+      )}
     </> 
   );
 }

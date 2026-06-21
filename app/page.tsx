@@ -150,7 +150,7 @@ export default function Home() {
                 >
                     WhatsApp: +52 (637) 935-2828
                 </a>
-                <p className="text-lg">Email: contacto@amboutiquefloral.com</p>
+                <p className="text-lg">Email: amboutiqueflora2022@gmail.com</p>
                 {/* <p className="text-lg">Ubicacion: Calle 4ta Adalberto Sotelo y G</p> */}
                 <a
                     href="https://www.google.com/maps/place/Am+boutique+floral/@30.7108965,-112.1539883,17z/data=!3m1!4b1!4m6!3m5!1s0x86d31571c461e1b9:0x990690c5647146fc!8m2!3d30.7108965!4d-112.1514134!16s%2Fg%2F11ydm34s6g?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D"
